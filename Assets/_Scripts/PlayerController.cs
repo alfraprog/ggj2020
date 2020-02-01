@@ -25,17 +25,16 @@ public class PlayerController : MonoBehaviour
 
     public GameObject playerBulletPrefab;
 
+    private float shootCountdown = 0f;
+    public float timeBetweenShots = 0.75f;
+    private float firePressed = 0.0f;
+
     public void DamagePlayer()
     {
         Debug.Log("Player is being damaged");
     }
 
     //public List<Gun> availableGuns = new List<Gun>();
-
-    private void Awake()
-    {
-
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +47,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (canMove)
-        { 
+        {
             rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
         }
         else
@@ -56,19 +55,32 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
 
+        if (firePressed > 0.0f)
+        {
+            if (shootCountdown <= 0)
+            {
+                Instantiate(playerBulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
+                shootCountdown = timeBetweenShots;
+            }
+        }
 
         if (waitTime > 0)
         {
             waitTime -= Time.deltaTime;
-            return;
         }
+
+        if (shootCountdown > 0)
+        {
+            shootCountdown -= Time.deltaTime;
+        }
+
+
     }
 
     public void Fire(InputAction.CallbackContext context)
     {
-        Debug.Log("Fire!");
-        Instantiate(playerBulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
-    }
+        firePressed = context.action.ReadValue<float>();
+    }   
 
     public void EnableMovement()
     {
