@@ -142,8 +142,9 @@ MonoBehaviour:
   settings:
     brainType: 1
     decisionsPerSec: 1
-    shotsPerFireDecision: 2
+    shotsPerFireDecision: 1
     shootSkill: 0.2
+    agroness: 0.5
     home: {fileID: 1246646078}
     maxDistanceFromHome: 2
     returnToHomeOnIdle: 1

@@ -8,7 +8,7 @@ public class EnemyBehaviour : MonoBehaviour
     public enum BrainType
     {
         NOP,
-        AGRO_DUDE
+        GROUND_UNIT
     }
 
     [Serializable]
@@ -16,9 +16,15 @@ public class EnemyBehaviour : MonoBehaviour
         public BrainType brainType;
         public float decisionsPerSec;
         public int shotsPerFireDecision;
+
+        [Range(0.01f, 1f)]
         public float shootSkill;
 
+        [Range(0.01f, 1f)]
+        public float agroness;
+
         public Transform home;
+
         public float maxDistanceFromHome;
         public bool returnToHomeOnIdle;
         public float radiusOfAwareness;
@@ -29,6 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
         brainType = BrainType.NOP,
         decisionsPerSec = 1f,
         shootSkill = 1,
+        agroness = 0.5f,
         shotsPerFireDecision = 1,
         maxDistanceFromHome = 2f,
         radiusOfAwareness = 5f
@@ -216,7 +223,7 @@ public class EnemyBehaviour : MonoBehaviour
             if (actionDecisionCoolDownTimeSec <= 0) {
                 this.lastActions = newActions;
 
-                this.actionDecisionCoolDownTimeSec = mac.settings.decisionsPerSec;
+                this.actionDecisionCoolDownTimeSec = 1 / mac.settings.decisionsPerSec;
             }
             else {
                 Debug.LogWarning("Tried to set actions before cooldown finished");
@@ -418,12 +425,12 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     // Select player and try to get close to him
-    private class AgroDudeBrain : Brain
+    private class GroundBrain : Brain
     {
         private GameObject playerToStalk;
 
 
-        public AgroDudeBrain(MealyMachine machine) : base(machine)
+        public GroundBrain(MealyMachine machine) : base(machine)
         {
         }
 
@@ -456,8 +463,11 @@ public class EnemyBehaviour : MonoBehaviour
             var chosenActions = new List<Action>();
 
             if (playerToStalk != null) {
-                var moveAndAttackActions = attackPlayer(playerToStalk);
-                chosenActions = moveAndAttackActions;
+                var roleShouldShoot = random.NextDouble();
+                if (roleShouldShoot <= mac.settings.agroness) {
+                    var moveAndAttackActions = attackPlayer(playerToStalk);
+                    chosenActions = moveAndAttackActions;
+                }
             }
 
             if (chosenActions.Count == 0) {
@@ -518,8 +528,8 @@ public class EnemyBehaviour : MonoBehaviour
             switch (bt) {
                 case BrainType.NOP:
                     return new Brain(this);
-                case BrainType.AGRO_DUDE:
-                    return new AgroDudeBrain(this);
+                case BrainType.GROUND_UNIT:
+                    return new GroundBrain(this);
                 default:
                     Debug.LogError("Unimplemented brain type: " + brainType.ToString());
                     return new Brain(this);
