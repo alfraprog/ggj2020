@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float offset = 0.5f;
     private float distanceToGround;
-    //private bool isGrounded = false;
     private Vector2 moveDirection;
     public int playerIndex = 0;
     public bool canMove = true;
@@ -28,6 +28,12 @@ public class PlayerController : MonoBehaviour
     private float shootCountdown = 0f;
     public float timeBetweenShots = 0.75f;
     private float firePressed = 0.0f;
+
+    public Animator animator;
+    private Vector2 oldVelocity;
+    private bool oldGrounded;
+    private bool isGrounded = false;
+    public Text debugText;
 
     public void DamagePlayer()
     {
@@ -46,14 +52,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckIsGrounded();
+
+        debugText.text = "Is grounded " + isGrounded.ToString();
+
+        //Debug.Log("y velocity "+rb.velocity.y);
         if (canMove)
         {
             rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
+            animator.SetFloat("horizontal", moveDirection.x);
         }
         else
         {
             rb.velocity = Vector2.zero;
         }
+
+
 
         if (firePressed > 0.0f)
         {
@@ -62,6 +76,11 @@ public class PlayerController : MonoBehaviour
                 Instantiate(playerBulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
                 shootCountdown = timeBetweenShots;
             }
+        }
+        
+        if (rb.velocity.y <= 0 && oldVelocity.y > 0 && isGrounded == false )
+        {
+            PlayerStartsFalling();
         }
 
         if (waitTime > 0)
@@ -73,6 +92,14 @@ public class PlayerController : MonoBehaviour
         {
             shootCountdown -= Time.deltaTime;
         }
+
+
+        CheckIsLanded();
+
+
+        oldVelocity = rb.velocity;
+        oldGrounded = isGrounded;
+
 
 
     }
@@ -99,42 +126,62 @@ public class PlayerController : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         // Make sure that we have a near 0 vertical velocity to avoid a bug when immediatly jumping when landing and borking the isGrounded
-        if (waitTime <= 0f && IsGrounded() && Mathf.Abs(rb.velocity.y) < 0.01f)
+        if (waitTime <= 0f && isGrounded && Mathf.Abs(rb.velocity.y) < 0.01f)
         { 
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             waitTime = timeBeforeNextJump;
-            //isGrounded = false;
+            animator.SetTrigger("Jump");
         }
     }
 
-    bool IsGrounded()
+    void CheckIsLanded()
     {
+        if (oldGrounded == false && isGrounded == true)
+        {
+            Debug.Log("We just landed");
+            animator.SetTrigger("Land");
+        }
+    }
 
-        Vector2 position = new Vector2(transform.position.x ,transform.position.y + 0.51f);
+    void PlayerStartsFalling()
+    {
+        Debug.Log("Started falling");
+        animator.SetTrigger("Fall");
+    }
+
+    void CheckIsGrounded()
+    {
+        
+        Vector2 position = new Vector2(transform.position.x , transform.position.y);
         Vector2 direction = Vector2.down;
-        float distance = 1.0f;
+        float distance = 1.0f; 
 
         Debug.DrawRay(position, direction, Color.green, 5000.0f);
 
         RaycastHit2D hitGround = Physics2D.Raycast(position, direction, distance, groundLayer);
+
+        bool checkGround = false;
+        bool checkPlayer = false;
+
         if (hitGround.collider != null )
         {
-            //Debug.Log("hit ground collider name " + hitGround.collider.gameObject.name);
+            checkGround = true;
         }
 
         RaycastHit2D hitPlayer = Physics2D.Raycast(position, direction, distance, playerLayer);
-        if (hitPlayer.collider != null)
+        if (hitPlayer.collider != null && hitPlayer.collider.gameObject != gameObject)
         {
-            //Debug.Log("hit player collider name " + hitPlayer.collider.gameObject.name);
+            checkPlayer = true;
         }
 
         //RaycastHit2D hit = Physics2D.Raycast(position, direction, distance);
-        if (hitPlayer.collider != null || hitGround.collider != null)
+        if (checkPlayer || checkGround)
         {
-            return true;
+            isGrounded = true;
+        }else
+        { 
+            isGrounded = false;
         }
-
-        return false;
     }
 
     public void Repair(InputAction.CallbackContext context)
@@ -158,9 +205,5 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-      // isGrounded = true;
-    }
 
 }
