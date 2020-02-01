@@ -4,46 +4,46 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -6047916120092417764
-    second: PlayerRobot_heavily_damaged_0
+    second: Idle_left_0
   - first:
       213: 6955884253732951699
-    second: PlayerRobot_heavily_damaged_1
+    second: Idle_left_1
   - first:
       213: 783824824620553625
-    second: PlayerRobot_heavily_damaged_2
+    second: Idle_right_0
   - first:
       213: -3594436250512504445
-    second: PlayerRobot_heavily_damaged_3
+    second: Idle_right_1
   - first:
       213: -7053808910710622148
-    second: PlayerRobot_heavily_damaged_4
+    second: Jump_left
   - first:
       213: -2681677862520628996
-    second: PlayerRobot_heavily_damaged_5
+    second: Hover_left
   - first:
       213: 7406669133329433483
-    second: PlayerRobot_heavily_damaged_6
+    second: Fall_left
   - first:
       213: 7116623305846531369
-    second: PlayerRobot_heavily_damaged_7
+    second: Land_left_0
   - first:
       213: 970669199581044134
-    second: PlayerRobot_heavily_damaged_8
+    second: Land_left_1
   - first:
       213: 7632983741884526200
-    second: PlayerRobot_heavily_damaged_9
+    second: Jump_right
   - first:
       213: -2180720187407311421
-    second: PlayerRobot_heavily_damaged_10
+    second: Hover_right
   - first:
       213: 5627736850153115278
-    second: PlayerRobot_heavily_damaged_11
+    second: Fall_right
   - first:
       213: 8510958661471772733
-    second: PlayerRobot_heavily_damaged_12
+    second: Land_right_0
   - first:
       213: 1496801271097984370
-    second: PlayerRobot_heavily_damaged_13
+    second: Land_right_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerRobot_heavily_damaged_0
+      name: Idle_left_0
       rect:
         serializedVersion: 2
         x: 0
@@ -149,7 +149,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerRobot_heavily_damaged_1
+      name: Idle_left_1
       rect:
         serializedVersion: 2
         x: 32
@@ -170,7 +170,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerRobot_heavily_damaged_2
+      name: Idle_right_0
       rect:
         serializedVersion: 2
         x: 0
@@ -191,7 +191,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerRobot_heavily_damaged_3
+      name: Idle_right_1
       rect:
         serializedVersion: 2
         x: 32
@@ -212,7 +212,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerRobot_heavily_damaged_4
+      name: Jump_left
       rect:
         serializedVersion: 2
         x: 0
@@ -233,7 +233,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerRobot_heavily_damaged_5
+      name: Hover_left
       rect:
         serializedVersion: 2
         x: 32
@@ -254,7 +254,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerRobot_heavily_damaged_6
+      name: Fall_left
       rect:
         serializedVersion: 2
         x: 64
@@ -275,7 +275,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerRobot_heavily_damaged_7
+      name: Land_left_0
       rect:
         serializedVersion: 2
         x: 96
@@ -296,7 +296,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerRobot_heavily_damaged_8
+      name: Land_left_1
       rect:
         serializedVersion: 2
         x: 128
@@ -317,7 +317,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerRobot_heavily_damaged_9
+      name: Jump_right
       rect:
         serializedVersion: 2
         x: 0
@@ -338,7 +338,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerRobot_heavily_damaged_10
+      name: Hover_right
       rect:
         serializedVersion: 2
         x: 32
@@ -359,7 +359,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerRobot_heavily_damaged_11
+      name: Fall_right
       rect:
         serializedVersion: 2
         x: 64
@@ -380,7 +380,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerRobot_heavily_damaged_12
+      name: Land_right_0
       rect:
         serializedVersion: 2
         x: 96
@@ -401,7 +401,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerRobot_heavily_damaged_13
+      name: Land_right_1
       rect:
         serializedVersion: 2
         x: 128
