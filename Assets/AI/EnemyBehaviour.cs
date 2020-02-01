@@ -166,7 +166,7 @@ public class EnemyBehaviour : MonoBehaviour
                 Destroy(bullet, 100);
             }
             else {
-                var fp = mac.self.transform.FindChild("Firepoint");
+                var fp = mac.self.transform.Find("Firepoint");
                 //var angle = Vector3.Angle(Vector3.right, direction);
                 var angle = Brain.PosNegAngle(Vector3.right, direction, Vector3.forward);
                 fp.transform.rotation = Quaternion.Euler(0, 0, angle);
