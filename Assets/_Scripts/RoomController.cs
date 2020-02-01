@@ -22,7 +22,7 @@ public class RoomController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         numberOfEnemiesToSpawn = enemySpawnCount;
+        numberOfEnemiesToSpawn = enemySpawnCount;
 
         if (playerSpawnPositions.Count < 1)
         {
@@ -36,6 +36,10 @@ public class RoomController : MonoBehaviour
         }
     }
 
+    public void TriggerOverheadSound()
+    {
+        AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.roomTransition);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -50,7 +54,8 @@ public class RoomController : MonoBehaviour
             if (playerExitCount >= GameController.instance.playerCount)
             {
                 Debug.Log("Leaving this town...");
-                GameController.instance.TransitionRoom(this);              
+                GameController.instance.TransitionRoom(this);
+                AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.roomTransition);
             }
         }
     }

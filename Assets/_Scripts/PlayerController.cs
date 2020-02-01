@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
             if (shootCountdown <= 0)
             {
                 Instantiate(playerBulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
+                AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.shotgun);
                 shootCountdown = timeBetweenShots;
             }
         }
@@ -147,7 +148,6 @@ public class PlayerController : MonoBehaviour
 
     void CheckIsGrounded()
     {
-        
         Vector2 position = new Vector2(transform.position.x , transform.position.y);
         Vector2 direction = Vector2.down;
         float distance = 1.0f; 
