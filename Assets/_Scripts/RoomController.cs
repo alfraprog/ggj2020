@@ -29,8 +29,11 @@ public class RoomController : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.gameObject.SetActive(false);
+            // disable the player when exiting the room
+            other.gameObject.GetComponent<PlayerController>().DisableMovement();
+
             playerExitCount++;
+            Debug.Log("Detected the player "+ other.gameObject.GetComponent<PlayerController>().playerIndex);
 
             if (playerExitCount >= GameController.instance.playerCount)
             {

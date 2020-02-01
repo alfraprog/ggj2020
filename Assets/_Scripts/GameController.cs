@@ -46,8 +46,9 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < selectPlayerCount; i++)
         {
             GameObject player = Instantiate(playerPrefab);
-            players.Add(player.GetComponent<PlayerController>());
-            Debug.Log("rooms[currentActive].playerSpawnPositions[i].transform.position" + rooms[currentActiveRoom].playerSpawnPositions[i].transform.position);
+            PlayerController playerController = player.GetComponent<PlayerController>();
+            playerController.playerIndex = i;
+            players.Add(playerController);
             PositionPlayer(i);
         }
        
@@ -72,7 +73,9 @@ public class GameController : MonoBehaviour
 
         for (int i = 0; i < players.Count; i++)
         {
-            players[i].gameObject.SetActive(true);
+            // re - enable the player controller
+
+            players[i].EnableMovement();
             PositionPlayer(i);
         }
         

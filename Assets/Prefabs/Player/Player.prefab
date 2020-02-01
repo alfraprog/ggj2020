@@ -77,6 +77,8 @@ MonoBehaviour:
   moveSpeed: 6
   jumpForce: 8
   offset: 0.5
+  playerIndex: 0
+  canMove: 1
 --- !u!114 &1242653305840740664
 MonoBehaviour:
   m_ObjectHideFlags: 0
