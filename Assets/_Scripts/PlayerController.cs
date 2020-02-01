@@ -60,14 +60,12 @@ public class PlayerController : MonoBehaviour
         if (canMove)
         {
             rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
-            animator.SetFloat("horizontal", moveDirection.x);
+            animator.SetFloat("HorizonalSpeed", moveDirection.x);
         }
         else
         {
             rb.velocity = Vector2.zero;
         }
-
-
 
         if (firePressed > 0.0f)
         {
@@ -99,8 +97,6 @@ public class PlayerController : MonoBehaviour
 
         oldVelocity = rb.velocity;
         oldGrounded = isGrounded;
-
-
 
     }
 

@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
     {
         if (rooms.Count < 1)
         {
-            Debug.LogError("No rooms in game controller");
+            Debug.LogWarning("No rooms in game controller");
         }
     }
 
@@ -56,6 +56,12 @@ public class GameController : MonoBehaviour
 
     public void PositionPlayer(int playerIndex)
     {
+        if (rooms.Count < 1)
+        {
+            Debug.LogWarning("Can't position player. Don't worry if you are just testing. This will be taken care by the RoomGenerator");
+            return;
+        }
+
         players[playerIndex].transform.position = rooms[currentActiveRoom].playerSpawnPositions[playerIndex].transform.position;
     }
 
@@ -74,8 +80,8 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < players.Count; i++)
         {
             // re - enable the player controller
-
             players[i].EnableMovement();
+            // Position to new spawn locations
             PositionPlayer(i);
         }
         
