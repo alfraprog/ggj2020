@@ -805,15 +805,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   firePoint: {fileID: 1822248849}
-  playerBulletPrefab: {fileID: 6665861853409896155, guid: b38eb1e38c13ee349b9907d297e36033,
-    type: 3}
-  timeBetweenShots: 0.75
   animator: {fileID: 2062718162}
   debugText: {fileID: 200061254}
   maxHealth: 100
   healAmount: 5
   damageOverTime: 5
   healDistance: 3
+  starterWeapon: {fileID: 8793042048935384262, guid: a242f8d4bd1151a43b21ac916147a5a5,
+    type: 3}
 --- !u!114 &1242653305840740664
 MonoBehaviour:
   m_ObjectHideFlags: 0

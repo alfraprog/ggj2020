@@ -25,10 +25,6 @@ public class PlayerController : MonoBehaviour
     private float waitTime = 0.0f;
     public GameObject firePoint;
 
-    public GameObject playerBulletPrefab;
-
-    private float shootCountdown = 0f;
-    public float timeBetweenShots = 0.75f;
     private float firePressed = 0.0f;
 
     public Animator animator;
@@ -52,9 +48,13 @@ public class PlayerController : MonoBehaviour
     private float repairValue = 0f;
     public float healDistance = 3.0f;
 
+    private Weapon activeWeapon;
+    public Weapon starterWeapon;
+
     public void AddWeapon(Weapon weapon)
     {
-        Debug.Log("We have a weapon yay");
+        activeWeapon = Instantiate(weapon);
+        activeWeapon.transform.parent = transform;
     }
 
 
@@ -77,6 +77,14 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
+        if (starterWeapon == null)
+        {
+            Debug.LogError("We have no weapon!!!!");
+        }
+
+        activeWeapon = Instantiate(starterWeapon);
+        activeWeapon.transform.parent = transform;
+
         playerHealth = maxHealth;
         playerIndex = GameController.instance.GetSpawnedPlayerCount();
         GetComponent<PlayerUIController>().SetColor(playerIndex);
@@ -138,10 +146,7 @@ public class PlayerController : MonoBehaviour
             waitTime -= Time.deltaTime;
         }
 
-        if (shootCountdown > 0)
-        {
-            shootCountdown -= Time.deltaTime;
-        }
+
     }
 
     void DoDisabledLogic()
@@ -172,11 +177,13 @@ public class PlayerController : MonoBehaviour
     {
         if (firePressed > 0.0f)
         {
-            if (shootCountdown <= 0)
+
+            activeWeapon.Shoot(firePoint);
+            if (activeWeapon.ammo <= 0 && !activeWeapon.isInfinite)
             {
-                Instantiate(playerBulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
-                AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.shotgun);
-                shootCountdown = timeBetweenShots;
+                Debug.Log("Ran out of bullets");
+                activeWeapon = Instantiate(starterWeapon);
+                activeWeapon.transform.parent = transform;
             }
         }
     }
