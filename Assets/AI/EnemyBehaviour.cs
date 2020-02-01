@@ -120,7 +120,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         public override int getInitialTickLifetime()
         {
-            return 1;
+            return 0;
         }
     }
 
@@ -133,7 +133,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         public override int getInitialTickLifetime()
         {
-            return 1;
+            return 0;
         }
 
     }
@@ -166,7 +166,8 @@ public class EnemyBehaviour : MonoBehaviour
             }
             else {
                 var fp = mac.self.transform.FindChild("Firepoint");
-                var angle = Vector3.Angle(Vector3.right, direction);
+                //var angle = Vector3.Angle(Vector3.right, direction);
+                var angle = Brain.PosNegAngle(Vector3.right, direction, Vector3.forward);
                 fp.transform.rotation = Quaternion.Euler(0, 0, angle); 
                 var bullet = Instantiate(mac.settings.bulletPrefab, initialPosition, fp.transform.rotation);
                 //var rb = bullet.GetComponent<Rigidbody2D>();
@@ -177,7 +178,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         public override int getInitialTickLifetime()
         {
-            return 1;
+            return 0;
         }
     }
 
@@ -408,7 +409,7 @@ public class EnemyBehaviour : MonoBehaviour
             return ret;
         }
 
-        public float PosNegAngle(Vector3 a1, Vector3 a2, Vector3 normal)
+        public static float PosNegAngle(Vector3 a1, Vector3 a2, Vector3 normal)
         {
             float angle = Vector3.Angle(a1, a2);
             float sign = Mathf.Sign(Vector3.Dot(normal, Vector3.Cross(a1, a2)));
@@ -488,6 +489,7 @@ public class EnemyBehaviour : MonoBehaviour
             if (playerToStalk != null) {
                 var roleShouldShoot = random.NextDouble();
                 if (roleShouldShoot <= mac.settings.agroness) {
+                    Debug.Log("Attacking player " + playerToStalk.name);
                     var moveAndAttackActions = attackPlayer(playerToStalk);
                     chosenActions = moveAndAttackActions;
                 }
