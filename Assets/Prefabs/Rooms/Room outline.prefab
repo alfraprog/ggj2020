@@ -87,7 +87,7 @@ Transform:
   m_Children:
   - {fileID: 4389198177183378796}
   m_Father: {fileID: 4389198177708007217}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &4389198177171559633
 Grid:
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 4389198177183378800}
   - component: {fileID: 4389198177183378801}
   - component: {fileID: 4389198177183378803}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2104,8 +2104,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4389198178233942854}
   - {fileID: 4389198177171559632}
+  - {fileID: 4389198178233942854}
   - {fileID: 4389198177223457357}
   - {fileID: 4389198177840512491}
   - {fileID: 1200647748}
@@ -2210,7 +2210,7 @@ Transform:
   m_LocalScale: {x: 30, y: 17, z: 1}
   m_Children: []
   m_Father: {fileID: 4389198177708007217}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4389198178233942855
 SpriteRenderer:

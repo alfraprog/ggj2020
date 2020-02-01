@@ -5,20 +5,30 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
+
     public float moveSpeed;
     public float jumpForce;
     public float offset = 0.5f;
     private float distanceToGround;
-    private bool isGrounded = false;
+    //private bool isGrounded = false;
     private Vector2 moveDirection;
     public int playerIndex = 0;
     public bool canMove = true;
 
+    public LayerMask groundLayer;
+    public LayerMask playerLayer;
+    private float timeBeforeNextJump = 0.3f;
+    private float waitTime = 0.0f;
+
+    private void Awake()
+    {
+
+    }
+
     // Start is called before the first frame update
     void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
+    {   
         distanceToGround = GetComponent<BoxCollider2D>().bounds.extents.y;
     }
 
@@ -33,6 +43,13 @@ public class PlayerController : MonoBehaviour
         else
         {
             rb.velocity = Vector2.zero;
+        }
+
+
+        if (waitTime > 0)
+        {
+            waitTime -= Time.deltaTime;
+            return;
         }
     }
 
@@ -58,11 +75,42 @@ public class PlayerController : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         // Make sure that we have a near 0 vertical velocity to avoid a bug when immediatly jumping when landing and borking the isGrounded
-        if ( isGrounded  && Mathf.Abs(rb.velocity.y) < 0.01f)
+        if (waitTime <= 0f && IsGrounded() && Mathf.Abs(rb.velocity.y) < 0.01f)
         { 
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            isGrounded = false;
+            waitTime = timeBeforeNextJump;
+            //isGrounded = false;
         }
+    }
+
+    bool IsGrounded()
+    {
+
+        Vector2 position = new Vector2(transform.position.x ,transform.position.y + 0.51f);
+        Vector2 direction = Vector2.down;
+        float distance = 1.0f;
+
+        Debug.DrawRay(position, direction, Color.green, 5000.0f);
+
+        RaycastHit2D hitGround = Physics2D.Raycast(position, direction, distance, groundLayer);
+        if (hitGround.collider != null )
+        {
+            //Debug.Log("hit ground collider name " + hitGround.collider.gameObject.name);
+        }
+
+        RaycastHit2D hitPlayer = Physics2D.Raycast(position, direction, distance, playerLayer);
+        if (hitPlayer.collider != null)
+        {
+            //Debug.Log("hit player collider name " + hitPlayer.collider.gameObject.name);
+        }
+
+        //RaycastHit2D hit = Physics2D.Raycast(position, direction, distance);
+        if (hitPlayer.collider != null || hitGround.collider != null)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public void Repair(InputAction.CallbackContext context)
@@ -77,7 +125,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        isGrounded = true;
+      // isGrounded = true;
     }
 
 }

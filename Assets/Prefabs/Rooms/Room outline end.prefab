@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 5888833901379273848}
   m_Father: {fileID: 5888833901901657637}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &5888833901365411269
 Grid:
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 5888833901379273828}
   - component: {fileID: 5888833901379273829}
   - component: {fileID: 5888833901379273831}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2088,8 +2088,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5888833902459415122}
   - {fileID: 5888833901365411268}
+  - {fileID: 5888833902459415122}
   - {fileID: 5888833901580899161}
   - {fileID: 5888833902063801599}
   m_Father: {fileID: 0}
@@ -2112,6 +2112,7 @@ MonoBehaviour:
   - {fileID: 5230602201550935140}
   - {fileID: 5230602200338479577}
   - {fileID: 5230602200686760480}
+  roomActivation: {fileID: 0}
 --- !u!1 &5888833902063801598
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,7 +2172,7 @@ Transform:
   m_LocalScale: {x: 30, y: 17, z: 1}
   m_Children: []
   m_Father: {fileID: 5888833901901657637}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5888833902459415123
 SpriteRenderer:
