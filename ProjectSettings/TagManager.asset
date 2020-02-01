@@ -13,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - IgnoreBullets
+  - Enemy bullets
+  - Player bullets
+  - Players
+  - Enemies
   - 
   - 
   - 
@@ -40,4 +40,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Far background
+    uniqueID: 154697185
+    locked: 0
+  - name: Tile background
+    uniqueID: 2017675235
+    locked: 0
+  - name: Characters
+    uniqueID: 3836069553
+    locked: 0
+  - name: Obstacles
+    uniqueID: 343882991
+    locked: 0
+  - name: Bullets
+    uniqueID: 1827257795
+    locked: 0
+  - name: FX
+    uniqueID: 4128101413
     locked: 0

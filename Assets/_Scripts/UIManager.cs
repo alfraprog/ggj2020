@@ -11,11 +11,13 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerSelectUI.SetActive(true);
     }
 
     // Update is called once per frame
