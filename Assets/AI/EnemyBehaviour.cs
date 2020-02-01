@@ -28,6 +28,10 @@ public class EnemyBehaviour : MonoBehaviour
         public float maxDistanceFromHome;
         public bool returnToHomeOnIdle;
         public float radiusOfAwareness;
+
+        public bool canRepair;
+        [Range(0f, 1f)]
+        public float eagernessToSeekoutRepair;
     }
 
     public BehaviourSettings settings = new BehaviourSettings()
@@ -38,7 +42,8 @@ public class EnemyBehaviour : MonoBehaviour
         agroness = 0.5f,
         shotsPerFireDecision = 1,
         maxDistanceFromHome = 2f,
-        radiusOfAwareness = 5f
+        radiusOfAwareness = 5f,
+        canRepair = true
     };
 
     public abstract class Action {
@@ -73,7 +78,6 @@ public class EnemyBehaviour : MonoBehaviour
     private class LeftAction : Action {
         public override void apply(MealyMachine mac) {
             //Debug.Log("Going left");
-
             mac.selfTransform.position = mac.selfTransform.position - new Vector3(mac.speed, 0, 0);
         }
 
