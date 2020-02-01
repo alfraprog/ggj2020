@@ -523,6 +523,7 @@ GameObject:
   - component: {fileID: 864890759}
   - component: {fileID: 864890762}
   - component: {fileID: 864890763}
+  - component: {fileID: 864890764}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -537,7 +538,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864890758}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &864890760
 Camera:
   m_ObjectHideFlags: 0
@@ -629,6 +630,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 30
   target: {fileID: 0}
+--- !u!114 &864890764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864890758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: -1
 --- !u!1 &911126783
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,7 +818,6 @@ MonoBehaviour:
   startRoom: {fileID: 2899376108140055981, guid: 9e5df1b8c587e1b4082a381b7eb2cfdc,
     type: 3}
   potentialRooms:
-  - {fileID: 3101659797262171649, guid: 8500e14dedb1c1e42bebb7644e2e9d86, type: 3}
   - {fileID: 9029357386703563215, guid: 883f09e06efe9ba4aad0d9795d1d4918, type: 3}
   endRoom: {fileID: 5888833901901657636, guid: 688b1eea1647ac34ea8e99233329509a, type: 3}
   bossRoom: {fileID: 0}
@@ -1316,6 +1329,85 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fmodAudio: {fileID: 11400000, guid: 533a4462d35b547348e646e6e83db115, type: 2}
+--- !u!1001 &1500179052
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1365698991187073729, guid: 883f09e06efe9ba4aad0d9795d1d4918,
+        type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029357386703563214, guid: 883f09e06efe9ba4aad0d9795d1d4918,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029357386703563214, guid: 883f09e06efe9ba4aad0d9795d1d4918,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029357386703563214, guid: 883f09e06efe9ba4aad0d9795d1d4918,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029357386703563214, guid: 883f09e06efe9ba4aad0d9795d1d4918,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029357386703563214, guid: 883f09e06efe9ba4aad0d9795d1d4918,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029357386703563214, guid: 883f09e06efe9ba4aad0d9795d1d4918,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029357386703563214, guid: 883f09e06efe9ba4aad0d9795d1d4918,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029357386703563214, guid: 883f09e06efe9ba4aad0d9795d1d4918,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029357386703563214, guid: 883f09e06efe9ba4aad0d9795d1d4918,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029357386703563214, guid: 883f09e06efe9ba4aad0d9795d1d4918,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029357386703563214, guid: 883f09e06efe9ba4aad0d9795d1d4918,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029357386703563215, guid: 883f09e06efe9ba4aad0d9795d1d4918,
+        type: 3}
+      propertyPath: m_Name
+      value: Alex Room outline 2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029357386703563215, guid: 883f09e06efe9ba4aad0d9795d1d4918,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 883f09e06efe9ba4aad0d9795d1d4918, type: 3}
 --- !u!1 &1605967689
 GameObject:
   m_ObjectHideFlags: 0

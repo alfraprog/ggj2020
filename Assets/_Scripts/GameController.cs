@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     private List<PlayerController> players = new List<PlayerController>();
 
     private int currentActiveRoom = 0;
-    internal int playerCount;
+    public int playerCount;
 
     private void Awake()
     {
@@ -49,6 +49,7 @@ public class GameController : MonoBehaviour
             GameObject player = Instantiate(playerPrefab);
             PlayerController playerController = player.GetComponent<PlayerController>();
             playerController.playerIndex = i;
+            playerController.GetComponent<PlayerUIController>().SetColor(i);
             players.Add(playerController);
             PositionPlayer(i);
         }
@@ -68,7 +69,6 @@ public class GameController : MonoBehaviour
 
     public void TransitionRoom(RoomController roomController)
     {
-        Debug.Log("Transitioning ");
         currentActiveRoom++;
         if (currentActiveRoom >= rooms.Count)
         {

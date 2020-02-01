@@ -27,7 +27,7 @@ public class EnemyBullet : MonoBehaviour
         }
         else
         {
-            Debug.Log("Hitting something else " + other.gameObject.name);
+           // Debug.Log("Hitting something else " + other.gameObject.name);
         }
 
 

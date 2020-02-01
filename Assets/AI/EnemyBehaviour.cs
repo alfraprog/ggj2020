@@ -112,7 +112,7 @@ public class EnemyBehaviour : MonoBehaviour
             var rb = mac.self.GetComponent<Rigidbody>();
             if (rb == null)
             {
-                Debug.Log("Cannot jump don't have rigitbody");
+                //Debug.Log("Cannot jump don't have rigitbody");
             }
             else {
                 rb.AddForce(Vector3.up);
@@ -170,9 +170,9 @@ public class EnemyBehaviour : MonoBehaviour
                 //var angle = Vector3.Angle(Vector3.right, direction);
                 var angle = Brain.PosNegAngle(Vector3.right, direction, Vector3.forward);
                 fp.transform.rotation = Quaternion.Euler(0, 0, angle);
-                Debug.Log("Instantiate bullet");
+                //Debug.Log("Instantiate bullet");
                 var bullet = Instantiate(mac.settings.bulletPrefab, initialPosition, fp.transform.rotation);
-                Debug.Log(bullet.transform.position.ToString());
+                //Debug.Log(bullet.transform.position.ToString());
                 
                 //var rb = bullet.GetComponent<Rigidbody2D>();
                 //rb.AddForce(forceToApply);
@@ -195,7 +195,7 @@ public class EnemyBehaviour : MonoBehaviour
         List<Action> lastActions = new List<Action>();
 
         public Brain(MealyMachine machine) {
-            Debug.Log("new brain");
+            //Debug.Log("new brain");
             this.mac = machine;
         }
 
@@ -498,7 +498,7 @@ public class EnemyBehaviour : MonoBehaviour
             if (playerToStalk != null) {
                 var roleShouldShoot = random.NextDouble();
                 if (roleShouldShoot <= mac.settings.agroness) {
-                    Debug.Log("Attacking player " + playerToStalk.name);
+                    //Debug.Log("Attacking player " + playerToStalk.name);
                     var moveAndAttackActions = attackPlayer(playerToStalk);
                     chosenActions = moveAndAttackActions;
                 }

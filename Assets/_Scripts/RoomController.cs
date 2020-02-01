@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,13 +17,19 @@ public class RoomController : MonoBehaviour
     private float spawnCounter = 0f;
     private float timeBetweenSpawns = 1.0f;
 
+    public GameObject leftBlocker;
+    public GameObject rightBlocker;
+
     int numberOfEnemiesToSpawn;
 
+    private bool roomActive = false;
+
+    private List<GameObject> enemies = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
-        numberOfEnemiesToSpawn = enemySpawnCount;
+      
 
         if (playerSpawnPositions.Count < 1)
         {
@@ -41,6 +48,7 @@ public class RoomController : MonoBehaviour
         AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.roomTransition);
     }
 
+    // Go to next room
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -49,14 +57,42 @@ public class RoomController : MonoBehaviour
             other.gameObject.GetComponent<PlayerController>().DisableMovement();
 
             playerExitCount++;
-            Debug.Log("Detected the player "+ other.gameObject.GetComponent<PlayerController>().playerIndex);
+            Debug.Log("Detected the player " + other.gameObject.GetComponent<PlayerController>().playerIndex);
 
             if (playerExitCount >= GameController.instance.playerCount)
             {
                 Debug.Log("Leaving this town...");
+                //int difficultyFactor = Mathf.RoundToInt((GameController.instance.playerCount - 1) * difficultyModifer);
+                // Debug.Log("Difficulty factor "+difficultyFactor);
+
+
+
+                DetermineSpawnValuesByPlayerCount();
+
                 GameController.instance.TransitionRoom(this);
                 AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.roomTransition);
+                leftBlocker.SetActive(true);
+                roomActive = true;
             }
+        }
+    }
+
+    private void DetermineSpawnValuesByPlayerCount()
+    {
+        int playerCount = GameController.instance.playerCount;
+        if (playerCount == 1)
+            numberOfEnemiesToSpawn = enemySpawnCount;
+        else if (playerCount == 2)
+        {
+            numberOfEnemiesToSpawn = enemySpawnCount;
+        }
+        else if (playerCount == 3)
+        {
+            numberOfEnemiesToSpawn = enemySpawnCount * 2;
+        }
+        else
+        {
+            numberOfEnemiesToSpawn = enemySpawnCount * 4;
         }
     }
 
@@ -64,8 +100,9 @@ public class RoomController : MonoBehaviour
     {
         roomActivation.SetActive(false);
     }
-    // Update is called once per frame
-    void Update()
+
+
+    public void SpawnEnemies()
     {
         if (potentialEnemiesToSpawn.Length < 1)
         {
@@ -73,27 +110,54 @@ public class RoomController : MonoBehaviour
             return;
         }
 
-        if (enemySpawnPositions.Count < 1 )
+        if (enemySpawnPositions.Count < 1)
         {
             //Debug.LogWarning("No potential spawn locations for enemies in this room");
             return;
         }
 
-
         if (numberOfEnemiesToSpawn > 0)
-        { 
+        {
             if (spawnCounter <= 0)
             {
-                int randomEnemyIndex = Random.Range(0, potentialEnemiesToSpawn.Length);
+                int randomEnemyIndex = UnityEngine.Random.Range(0, potentialEnemiesToSpawn.Length);
                 spawnCounter = timeBetweenSpawns;
-                int randomSpawn = Random.Range(0, enemySpawnPositions.Count);
+                int randomSpawn = UnityEngine.Random.Range(0, enemySpawnPositions.Count);
 
-                Instantiate(potentialEnemiesToSpawn[randomEnemyIndex], enemySpawnPositions[randomSpawn].transform.position, Quaternion.identity);
+                enemies.Add(Instantiate(potentialEnemiesToSpawn[randomEnemyIndex], enemySpawnPositions[randomSpawn].transform.position, Quaternion.identity));
                 numberOfEnemiesToSpawn--;
-            } else
+            }
+            else
             {
                 spawnCounter -= Time.deltaTime;
             }
         }
+    }
+
+
+    void CleanDeadEnemies()
+    {
+        for (int i = enemies.Count - 1; i >= 0; i--)
+        {
+            if (enemies[i] == null)
+            {
+                enemies.RemoveAt(i);
+            }
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!roomActive)
+            return;
+
+        CleanDeadEnemies();
+
+        // Check Open next room
+        if (enemies.Count < 1 && numberOfEnemiesToSpawn < 1)
+            rightBlocker.SetActive(false);
+
+        SpawnEnemies();
     }
 }
