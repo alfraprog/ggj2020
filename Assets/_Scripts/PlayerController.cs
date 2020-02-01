@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,6 +21,16 @@ public class PlayerController : MonoBehaviour
     public LayerMask playerLayer;
     private float timeBeforeNextJump = 0.3f;
     private float waitTime = 0.0f;
+    public GameObject firePoint;
+
+    public GameObject playerBulletPrefab;
+
+    public void DamagePlayer()
+    {
+        Debug.Log("Player is being damaged");
+    }
+
+    //public List<Gun> availableGuns = new List<Gun>();
 
     private void Awake()
     {
@@ -56,6 +67,7 @@ public class PlayerController : MonoBehaviour
     public void Fire(InputAction.CallbackContext context)
     {
         Debug.Log("Fire!");
+        Instantiate(playerBulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
     }
 
     public void EnableMovement()
@@ -121,6 +133,17 @@ public class PlayerController : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         moveDirection = context.action.ReadValue<Vector2>();
+
+        if (moveDirection.x < 0.0f)
+        {
+            firePoint.transform.localPosition = new Vector2(-0.8f, 0);
+            firePoint.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180.0f));
+        }
+        else if (moveDirection.x > 0.0f)
+        {
+            firePoint.transform.localPosition = new Vector2(0.8f, 0);
+            firePoint.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
