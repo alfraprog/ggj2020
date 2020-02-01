@@ -30,7 +30,7 @@ public class PlayerBullet : MonoBehaviour
         Debug.Log("On trigger enter with " + other.tag+ "game object name "+other.gameObject.name);
         if (other.tag == "Enemy")
         {
-            other.gameObject.GetComponent<EnemyController>().DamageEnemy();
+            other.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
         }
 
         Destroy(gameObject);

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 937033951708941434}
   - component: {fileID: 937033951708941435}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Room activator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,10 @@ MonoBehaviour:
   - {fileID: 2938335767462010702}
   - {fileID: 2938335768667042547}
   - {fileID: 2938335769032104202}
+  enemySpawnPositions: []
   roomActivation: {fileID: 937033951708941437}
+  enemySpawnCount: 5
+  potentialEnemiesToSpawn: []
 --- !u!50 &937033952809002073
 Rigidbody2D:
   serializedVersion: 4

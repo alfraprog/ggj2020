@@ -24,8 +24,14 @@ public class EnemyBullet : MonoBehaviour
         if (other.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerController>().DamagePlayer();
-            Destroy(gameObject);
         }
+        else
+        {
+            Debug.Log("Hitting something else " + other.gameObject.name);
+        }
+
+
+        Destroy(gameObject);
     }
 
     private void OnBecameInvisible()
