@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
 
     private int currentActiveRoom = 0;
     public int playerCount;
+    private int currentSpawnedPlayerCount = 0;
 
     private void Awake()
     {
@@ -47,12 +48,11 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < selectPlayerCount; i++)
         {
             GameObject player = Instantiate(playerPrefab);
-            PlayerController playerController = player.GetComponent<PlayerController>();
-            playerController.playerIndex = i;
-            playerController.GetComponent<PlayerUIController>().SetColor(i);
-            players.Add(playerController);
+            players.Add(player.GetComponent<PlayerController>());
             PositionPlayer(i);
         }
+
+
        
     }
 
@@ -86,6 +86,11 @@ public class GameController : MonoBehaviour
             PositionPlayer(i);
         }
         
+    }
+
+    public int GetSpawnedPlayerCount()
+    {
+        return currentSpawnedPlayerCount++;
     }
 
     public void GameOver()

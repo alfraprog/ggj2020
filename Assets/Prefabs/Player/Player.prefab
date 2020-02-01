@@ -317,7 +317,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1258245143
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &1436805047
@@ -949,7 +949,7 @@ MonoBehaviour:
     m_ActionId: 6c96bbeb-8949-4308-8192-55aac6a2eb06
     m_ActionName: Player/Repair[/XInputControllerWindows/buttonWest,/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

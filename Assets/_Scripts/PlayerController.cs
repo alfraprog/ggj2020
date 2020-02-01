@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public int playerIndex = 0;
     public bool canMove = true;
 
+
     public LayerMask groundLayer;
     public LayerMask playerLayer;
     private float timeBeforeNextJump = 0.3f;
@@ -51,6 +52,12 @@ public class PlayerController : MonoBehaviour
     private float repairValue = 0f;
     public float healDistance = 3.0f;
 
+    public void AddWeapon(Weapon weapon)
+    {
+        Debug.Log("We have a weapon yay");
+    }
+
+
     public void DamagePlayer(float damageValue)
     {
         // only take damage when normal
@@ -71,6 +78,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {   
         playerHealth = maxHealth;
+        playerIndex = GameController.instance.GetSpawnedPlayerCount();
+        GetComponent<PlayerUIController>().SetColor(playerIndex);
     }
 
 

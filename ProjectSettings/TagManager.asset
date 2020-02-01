@@ -54,9 +54,12 @@ TagManager:
   - name: Obstacles
     uniqueID: 343882991
     locked: 0
-  - name: Bullets
-    uniqueID: 1827257795
+  - name: UI
+    uniqueID: 3036722153
     locked: 0
   - name: FX
     uniqueID: 4128101413
+    locked: 0
+  - name: Bullets
+    uniqueID: 1827257795
     locked: 0

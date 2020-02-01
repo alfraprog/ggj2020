@@ -48,11 +48,28 @@ public class RoomController : MonoBehaviour
         AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.roomTransition);
     }
 
-    // Go to next room
+    private void ActivateRoom()
+    {
+        DetermineSpawnValuesByPlayerCount();
+
+        GameController.instance.TransitionRoom(this);
+        AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.roomTransition);
+        leftBlocker.SetActive(true);
+        roomActive = true;
+    }
+
+        // Go to next room
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
+            if (GameController.instance.rooms.Count == 1)
+            {
+                ActivateRoom();
+                return;
+            }
+
+
             // disable the player when exiting the room
             other.gameObject.GetComponent<PlayerController>().DisableMovement();
 
@@ -65,14 +82,8 @@ public class RoomController : MonoBehaviour
                 //int difficultyFactor = Mathf.RoundToInt((GameController.instance.playerCount - 1) * difficultyModifer);
                 // Debug.Log("Difficulty factor "+difficultyFactor);
 
-
-
-                DetermineSpawnValuesByPlayerCount();
-
-                GameController.instance.TransitionRoom(this);
-                AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.roomTransition);
-                leftBlocker.SetActive(true);
-                roomActive = true;
+                ActivateRoom();
+            
             }
         }
     }
