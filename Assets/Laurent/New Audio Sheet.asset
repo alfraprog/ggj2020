@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9857d4781e3d42df8b792a88b478baf, type: 3}
   m_Name: New Audio Sheet
   m_EditorClassIdentifier: 
+  musicTune01: event:/Music/music01
+  musicTune02: event:/Music/music02
   roomTransition: event:/UI/roomTransition
   shotgun: event:/Player/shotgun
-  death: event:/Player/overheat
-  overheat: event:/Player/overheat
-  weaponPickup: event:/Player/weaponPickup
+  death: event:/Player/death
+  playerOverheat: event:/Player/overheat
+  playerWeaponPickup: event:/Player/weaponPickup
+  playerRaygun: event:/Player/raygun
+  playerRepair: event:/Player/repair
+  enemyDeath: event:/Enemy/death
+  enemyBulletImpact: event:/Enemy/bulletImpact
