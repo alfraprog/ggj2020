@@ -10,7 +10,7 @@ public class EnemyBullet : MonoBehaviour
 
     //public GameObject impactEffect;
 
-    public int damage = 50;
+    public float damage = 50f;
 
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.gameObject.GetComponent<PlayerController>().DamagePlayer();
+            other.gameObject.GetComponent<PlayerController>().DamagePlayer(damage);
         }
         else
         {

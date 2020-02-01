@@ -69,13 +69,13 @@ public class RoomController : MonoBehaviour
     {
         if (potentialEnemiesToSpawn.Length < 1)
         {
-            Debug.LogWarning("No potential enemies in this room");
+            //Debug.LogWarning("No potential enemies in this room");
             return;
         }
 
         if (enemySpawnPositions.Count < 1 )
         {
-            Debug.LogWarning("No potential spawn locations for enemies in this room");
+            //Debug.LogWarning("No potential spawn locations for enemies in this room");
             return;
         }
 

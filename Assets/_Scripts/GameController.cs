@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -85,5 +86,11 @@ public class GameController : MonoBehaviour
             PositionPlayer(i);
         }
         
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("Game over!");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

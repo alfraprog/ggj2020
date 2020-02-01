@@ -7,12 +7,13 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public float weaponOffset = 0.8f;
     public Rigidbody2D rb;
+    public PlayerUIController uiController;
 
     public float moveSpeed;
     public float jumpForce;
     public float offset = 0.5f;
-    private float distanceToGround;
     private Vector2 moveDirection;
     public int playerIndex = 0;
     public bool canMove = true;
@@ -35,27 +36,117 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = false;
     public Text debugText;
 
-    public void DamagePlayer()
+    float playerHealth;
+    public float maxHealth = 100.0f;
+
+    public float healAmount = 5.0f;
+
+    private enum PlayerState
     {
-        Debug.Log("Player is being damaged");
+        Normal,Repairing,Disabled
     }
 
-    //public List<Gun> availableGuns = new List<Gun>();
+    private PlayerState currentState = PlayerState.Normal;
+    public float damageOverTime = 5f;
+    private float repairValue = 0f;
+    public float healDistance = 3.0f;
+
+    public void DamagePlayer(float damageValue)
+    {
+        // only take damage when normal
+        if (currentState == PlayerState.Normal)
+        {
+            playerHealth -= damageValue;
+            uiController.UpdateHealth(playerHealth);
+            if (playerHealth <= maxHealth / 2.0f)
+            {
+                currentState = PlayerState.Disabled;
+                // stop horizontal movement
+                rb.velocity = new Vector2(0f, rb.velocity.y);
+            }
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {   
-        distanceToGround = GetComponent<BoxCollider2D>().bounds.extents.y;
+        playerHealth = maxHealth;
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        if (repairValue > 0f )
+        {
+            GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Player");
+
+            foreach (GameObject gameObjectToTest in gameObjects)
+            {
+                if (gameObjectToTest == gameObject)
+                {
+                    continue;
+                }else
+                {
+                    if (Vector2.Distance(gameObjectToTest.transform.position, gameObject.transform.position) < healDistance)
+                    {
+                        
+                        gameObjectToTest.GetComponent<PlayerController>().ReceiveHealing( healAmount );
+                    }
+                }
+            }
+        }
+
         CheckIsGrounded();
+
+        if (currentState == PlayerState.Disabled)
+        {
+            DoDisabledLogic();
+        }
 
         debugText.text = "Is grounded " + isGrounded.ToString();
 
+        if (currentState == PlayerState.Normal)
+        {
+            DoNormalPlayerLogic();
+        }
+
+        UpdateTimers();
+
+        CheckIsLanded();
+
+        oldVelocity = rb.velocity;
+        oldGrounded = isGrounded;
+
+        // Repair needs to be button bashed
+        repairValue = 0f;
+    }
+
+    void UpdateTimers()
+    {
+        if (waitTime > 0)
+        {
+            waitTime -= Time.deltaTime;
+        }
+
+        if (shootCountdown > 0)
+        {
+            shootCountdown -= Time.deltaTime;
+        }
+    }
+
+    void DoDisabledLogic()
+    {
+        playerHealth -= damageOverTime * Time.deltaTime;
+        uiController.UpdateHealth(playerHealth);
+        if (playerHealth <= 0)
+        {
+            GameController.instance.GameOver();
+        }
+    }
+
+    void HandleMovement()
+    {
         //Debug.Log("y velocity "+rb.velocity.y);
         if (canMove)
         {
@@ -66,7 +157,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
+    }
 
+    void HandleShooting()
+    {
         if (firePressed > 0.0f)
         {
             if (shootCountdown <= 0)
@@ -76,35 +170,31 @@ public class PlayerController : MonoBehaviour
                 shootCountdown = timeBetweenShots;
             }
         }
-        
-        if (rb.velocity.y <= 0 && oldVelocity.y > 0 && isGrounded == false )
+    }
+
+    void DoNormalPlayerLogic()
+    {
+        HandleMovement();
+        HandleShooting();
+
+        if (rb.velocity.y <= 0 && oldVelocity.y > 0 && isGrounded == false)
         {
             PlayerStartsFalling();
         }
-
-        if (waitTime > 0)
-        {
-            waitTime -= Time.deltaTime;
-        }
-
-        if (shootCountdown > 0)
-        {
-            shootCountdown -= Time.deltaTime;
-        }
-
-
-        CheckIsLanded();
-
-
-        oldVelocity = rb.velocity;
-        oldGrounded = isGrounded;
-
     }
 
-    public void Fire(InputAction.CallbackContext context)
+    public void ReceiveHealing(float healAmount)
     {
-        firePressed = context.action.ReadValue<float>();
-    }   
+        playerHealth += healAmount;
+
+        if (playerHealth >= maxHealth)
+        {
+            playerHealth = maxHealth;
+            currentState = PlayerState.Normal;
+        }
+
+        uiController.UpdateHealth(playerHealth);
+    }
 
     public void EnableMovement()
     {
@@ -120,8 +210,18 @@ public class PlayerController : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = false;
     }
 
+    /* Input handling */
+
+    public void Fire(InputAction.CallbackContext context)
+    {
+        firePressed = context.action.ReadValue<float>();
+    }
+
     public void Jump(InputAction.CallbackContext context)
     {
+        if (currentState == PlayerState.Disabled)
+            return;
+
         // Make sure that we have a near 0 vertical velocity to avoid a bug when immediatly jumping when landing and borking the isGrounded
         if (waitTime <= 0f && isGrounded && Mathf.Abs(rb.velocity.y) < 0.01f)
         { 
@@ -131,18 +231,40 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Move(InputAction.CallbackContext context)
+    {
+        moveDirection = context.action.ReadValue<Vector2>();
+
+        if (moveDirection.x < 0.0f)
+        {
+            firePoint.transform.localPosition = new Vector2(-weaponOffset, 0);
+            firePoint.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180.0f));
+        }
+        else if (moveDirection.x > 0.0f)
+        {
+            firePoint.transform.localPosition = new Vector2(weaponOffset, 0);
+            firePoint.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        }
+    }
+
+    public void Repair(InputAction.CallbackContext context)
+    {
+        Debug.Log("The repair value "+repairValue);
+       repairValue = context.action.ReadValue<float>();
+    }
+
     void CheckIsLanded()
     {
         if (oldGrounded == false && isGrounded == true)
         {
-            Debug.Log("We just landed");
+            //Debug.Log("We just landed");
             animator.SetTrigger("Land");
         }
     }
 
     void PlayerStartsFalling()
     {
-        Debug.Log("Started falling");
+        //Debug.Log("Started falling");
         animator.SetTrigger("Fall");
     }
 
@@ -180,26 +302,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Repair(InputAction.CallbackContext context)
-    {
-        Debug.Log("Repair!");
-    }
 
-    public void Move(InputAction.CallbackContext context)
-    {
-        moveDirection = context.action.ReadValue<Vector2>();
 
-        if (moveDirection.x < 0.0f)
-        {
-            firePoint.transform.localPosition = new Vector2(-0.8f, 0);
-            firePoint.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180.0f));
-        }
-        else if (moveDirection.x > 0.0f)
-        {
-            firePoint.transform.localPosition = new Vector2(0.8f, 0);
-            firePoint.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
-        }
-    }
 
 
 }
