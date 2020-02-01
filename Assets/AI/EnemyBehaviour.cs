@@ -17,6 +17,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         public GameObject bulletPrefab;
 
+        [Range(0.1f, 2f)]
         public float decisionsPerSec;
         public int shotsPerFireDecision;
 
@@ -168,8 +169,11 @@ public class EnemyBehaviour : MonoBehaviour
                 var fp = mac.self.transform.FindChild("Firepoint");
                 //var angle = Vector3.Angle(Vector3.right, direction);
                 var angle = Brain.PosNegAngle(Vector3.right, direction, Vector3.forward);
-                fp.transform.rotation = Quaternion.Euler(0, 0, angle); 
+                fp.transform.rotation = Quaternion.Euler(0, 0, angle);
+                Debug.Log("Instantiate bullet");
                 var bullet = Instantiate(mac.settings.bulletPrefab, initialPosition, fp.transform.rotation);
+                Debug.Log(bullet.transform.position.ToString());
+                
                 //var rb = bullet.GetComponent<Rigidbody2D>();
                 //rb.AddForce(forceToApply);
             }
@@ -246,8 +250,13 @@ public class EnemyBehaviour : MonoBehaviour
         public virtual void setActions(List<Action> newActions) {
             if (actionDecisionCoolDownTimeSec <= 0) {
                 this.lastActions = newActions;
+                // when changing in editor, short time becomes NaN, ai unresponsive, use default in that case
+                var decisionsPerSec = mac.settings.decisionsPerSec;
+                if (decisionsPerSec < 0.1f) {
+                    decisionsPerSec = 1f;
+                }
 
-                this.actionDecisionCoolDownTimeSec = 1 / mac.settings.decisionsPerSec;
+                this.actionDecisionCoolDownTimeSec = 1 / decisionsPerSec;
             }
             else {
                 Debug.LogWarning("Tried to set actions before cooldown finished");

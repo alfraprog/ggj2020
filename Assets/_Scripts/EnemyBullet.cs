@@ -24,9 +24,8 @@ public class EnemyBullet : MonoBehaviour
         if (other.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerController>().DamagePlayer();
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
     }
 
     private void OnBecameInvisible()
