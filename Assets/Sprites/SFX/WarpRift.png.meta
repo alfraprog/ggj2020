@@ -1,0 +1,895 @@
+fileFormatVersion: 2
+guid: 6b847b8174a5cb64b8df11669950f97e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1425676245156873204
+    second: WarpRift_0
+  - first:
+      213: 1491047630759432592
+    second: WarpRift_1
+  - first:
+      213: -9004653211592817587
+    second: WarpRift_2
+  - first:
+      213: -2587339534629888173
+    second: WarpRift_3
+  - first:
+      213: 5204795165129993163
+    second: WarpRift_4
+  - first:
+      213: 129932551528731868
+    second: WarpRift_5
+  - first:
+      213: 8362497089915562100
+    second: WarpRift_6
+  - first:
+      213: 5074589440026699372
+    second: WarpRift_7
+  - first:
+      213: -1191923245634008935
+    second: WarpRift_8
+  - first:
+      213: 714610906043968714
+    second: WarpRift_9
+  - first:
+      213: 3432362834482278902
+    second: WarpRift_10
+  - first:
+      213: -3274926345642385439
+    second: WarpRift_11
+  - first:
+      213: 7094011061560139238
+    second: WarpRift_12
+  - first:
+      213: -1688692884909963920
+    second: WarpRift_13
+  - first:
+      213: 2636105988398172091
+    second: WarpRift_14
+  - first:
+      213: -6564678093080532627
+    second: WarpRift_15
+  - first:
+      213: 5641101221728982093
+    second: WarpRift_16
+  - first:
+      213: -5639172970681787289
+    second: WarpRift_17
+  - first:
+      213: -7162081899022817005
+    second: WarpRift_18
+  - first:
+      213: 355527956455383412
+    second: WarpRift_19
+  - first:
+      213: 4951044639571939271
+    second: WarpRift_20
+  - first:
+      213: -7069661222368243665
+    second: WarpRift_21
+  - first:
+      213: -8585081074556154821
+    second: WarpRift_22
+  - first:
+      213: -8494505876404789509
+    second: WarpRift_23
+  - first:
+      213: -2219258848571760040
+    second: WarpRift_24
+  - first:
+      213: 8430092675860837808
+    second: WarpRift_25
+  - first:
+      213: 5114078837504037243
+    second: WarpRift_26
+  - first:
+      213: 6207034784514725471
+    second: WarpRift_27
+  - first:
+      213: 1841618608957431345
+    second: WarpRift_28
+  - first:
+      213: 1558031063007611079
+    second: WarpRift_29
+  - first:
+      213: 5941250810963512284
+    second: WarpRift_30
+  - first:
+      213: 4299103612438087481
+    second: WarpRift_31
+  - first:
+      213: -71440327601655624
+    second: WarpRift_32
+  - first:
+      213: -6307075678618792311
+    second: WarpRift_33
+  - first:
+      213: 4040642897745810369
+    second: WarpRift_34
+  - first:
+      213: -1000179695389342301
+    second: WarpRift_35
+  - first:
+      213: -1590604708681297859
+    second: WarpRift_36
+  - first:
+      213: -612185800100478606
+    second: WarpRift_37
+  - first:
+      213: -478080184929765602
+    second: WarpRift_38
+  - first:
+      213: 6277617009351742146
+    second: WarpRift_39
+  - first:
+      213: 2515357983557365620
+    second: WarpRift_40
+  - first:
+      213: -1289503913438262674
+    second: WarpRift_41
+  - first:
+      213: 2485559137047393091
+    second: WarpRift_42
+  - first:
+      213: -190366020924447314
+    second: WarpRift_43
+  - first:
+      213: -6583338777736243348
+    second: WarpRift_44
+  - first:
+      213: 1044032603213489150
+    second: WarpRift_45
+  - first:
+      213: 8934552665578288298
+    second: WarpRift_46
+  - first:
+      213: -4370341142664567805
+    second: WarpRift_47
+  - first:
+      213: -3125750274032366299
+    second: WarpRift_48
+  - first:
+      213: -4984330567292426197
+    second: WarpRift_49
+  - first:
+      213: -7634372604246411468
+    second: WarpRift_50
+  - first:
+      213: -7182861534745611466
+    second: WarpRift_51
+  - first:
+      213: 836269691931950003
+    second: WarpRift_52
+  - first:
+      213: 5239370772883824452
+    second: WarpRift_53
+  - first:
+      213: -7820478309323232795
+    second: WarpRift_54
+  - first:
+      213: -2528533178277813982
+    second: WarpRift_55
+  - first:
+      213: -7666328677591354676
+    second: WarpRift_56
+  - first:
+      213: 4290684117167599402
+    second: WarpRift_57
+  - first:
+      213: -8161918933275703420
+    second: WarpRift_58
+  - first:
+      213: 2040688028910001769
+    second: WarpRift_59
+  - first:
+      213: 2838892800289659001
+    second: WarpRift_60
+  - first:
+      213: -4240394993426741887
+    second: WarpRift_61
+  - first:
+      213: -4086974561539412015
+    second: WarpRift_62
+  - first:
+      213: -5574435958171239513
+    second: WarpRift_63
+  - first:
+      213: 68316363720730615
+    second: WarpRift_64
+  - first:
+      213: -5693357596801096666
+    second: WarpRift_65
+  - first:
+      213: 3149392612892391330
+    second: WarpRift_66
+  - first:
+      213: 8371829974529062248
+    second: WarpRift_67
+  - first:
+      213: 7824855601347760190
+    second: WarpRift_68
+  - first:
+      213: -6807933318827149047
+    second: WarpRift_69
+  - first:
+      213: 7490717139058620292
+    second: WarpRift_70
+  - first:
+      213: -8198344019453973387
+    second: WarpRift_71
+  - first:
+      213: 4015454656066093583
+    second: WarpRift_72
+  - first:
+      213: 7405891357254533017
+    second: WarpRift_73
+  - first:
+      213: -3219473495661884095
+    second: WarpRift_74
+  - first:
+      213: -5446031606739521644
+    second: WarpRift_75
+  - first:
+      213: 5693385171869824019
+    second: WarpRift_76
+  - first:
+      213: 6458080928678788294
+    second: WarpRift_77
+  - first:
+      213: -8949130544213417030
+    second: WarpRift_78
+  - first:
+      213: 9208070412825864573
+    second: WarpRift_79
+  - first:
+      213: 5002561811647029993
+    second: WarpRift_80
+  - first:
+      213: 530911755042733654
+    second: WarpRift_81
+  - first:
+      213: -9175028608555499548
+    second: WarpRift_82
+  - first:
+      213: 2605197157715416887
+    second: WarpRift_83
+  - first:
+      213: 5300971805951411226
+    second: WarpRift_84
+  - first:
+      213: 5765654116947657846
+    second: WarpRift_85
+  - first:
+      213: 527012491010701012
+    second: WarpRift_86
+  - first:
+      213: -6206492197394841590
+    second: WarpRift_87
+  - first:
+      213: -4916355834506387442
+    second: WarpRift_88
+  - first:
+      213: 184371385327725589
+    second: WarpRift_89
+  - first:
+      213: 814516202876624539
+    second: WarpRift_90
+  - first:
+      213: -4572315032068383673
+    second: WarpRift_91
+  - first:
+      213: -8768134416929744250
+    second: WarpRift_92
+  - first:
+      213: -4154543789337757023
+    second: WarpRift_93
+  - first:
+      213: -3461029852323465859
+    second: WarpRift_94
+  - first:
+      213: 2998465466389194576
+    second: WarpRift_95
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: WarpRift_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f3c94dcdf409c310800000000000000
+      internalID: 1425676245156873204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0919a969be341b410800000000000000
+      internalID: 1491047630759432592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d440e6ddc9b090380800000000000000
+      internalID: -9004653211592817587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35f9f0dc66ce71cd0800000000000000
+      internalID: -2587339534629888173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcb6e3260a52b3840800000000000000
+      internalID: 5204795165129993163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd451aa97fc9dc100800000000000000
+      internalID: 129932551528731868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 478a7affbce8d0470800000000000000
+      internalID: 8362497089915562100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c666db995309c6640800000000000000
+      internalID: 5074589440026699372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99844788f10757fe0800000000000000
+      internalID: -1191923245634008935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: accee5735decae900800000000000000
+      internalID: 714610906043968714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f1b19100d332af20800000000000000
+      internalID: 3432362834482278902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_11
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1efda6607df1d82d0800000000000000
+      internalID: -3274926345642385439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_12
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eddbfc897df27260800000000000000
+      internalID: 7094011061560139238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_13
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 075463ca4ce8098e0800000000000000
+      internalID: -1688692884909963920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_14
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb7c0c40e64559420800000000000000
+      internalID: 2636105988398172091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_15
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6965253e0495e4a0800000000000000
+      internalID: -6564678093080532627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_16
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d449d2f5ca7394e40800000000000000
+      internalID: 5641101221728982093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_17
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76c178f8f02adb1b0800000000000000
+      internalID: -5639172970681787289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_18
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3196d7c857c2b9c90800000000000000
+      internalID: -7162081899022817005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_19
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4716e30fac61fe400800000000000000
+      internalID: 355527956455383412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_20
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cf89c03ed4a5b440800000000000000
+      internalID: 4951044639571939271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_21
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f20136e239483ed90800000000000000
+      internalID: -7069661222368243665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_22
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3cc6279f3aabd880800000000000000
+      internalID: -8585081074556154821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarpRift_23
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfe9c6649e37d1a80800000000000000
+      internalID: -8494505876404789509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: b80bf8c75cae8314c87cc305854e85ba
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
