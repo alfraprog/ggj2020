@@ -67,6 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8af6254de925548b532a5ffd695f8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidBody: {fileID: 5266730917227263834}
+  bulletSpeed: 7.5
+  damage: 50
 --- !u!61 &8754151707204960901
 BoxCollider2D:
   m_ObjectHideFlags: 0

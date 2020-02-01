@@ -14,6 +14,9 @@ public class EnemyBehaviour : MonoBehaviour
     [Serializable]
     public class BehaviourSettings {
         public BrainType brainType;
+
+        public GameObject bulletPrefab;
+
         public float decisionsPerSec;
         public int shotsPerFireDecision;
 
@@ -36,7 +39,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public BehaviourSettings settings = new BehaviourSettings()
     {
-        brainType = BrainType.NOP,
+        brainType = BrainType.GROUND_UNIT,
         decisionsPerSec = 1f,
         shootSkill = 1,
         agroness = 0.5f,
@@ -140,20 +143,36 @@ public class EnemyBehaviour : MonoBehaviour
         Vector3 direction;
 
         public ShootAction(Vector3 direction) {
-            this.direction = direction;
+            this.direction = new Vector3(direction.x, direction.y, 0);
+            //this.direction = direction;
         }
 
         public override void apply(MealyMachine mac)
         {
+            var initialPosition = mac.selfTransform.position;
+            var forceToApply = direction * 100;
+
             //Debug.Log("Shooting");
-            var bullet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            bullet.transform.position = mac.selfTransform.position + direction * 2;
-            bullet.transform.localScale = Vector3.one * 0.1f;
-            var rb = bullet.AddComponent<Rigidbody>();
-            rb.mass = 0.1f;
-            rb.isKinematic = false;
-            rb.AddForce(direction * 100);
-            Destroy(bullet, 100);
+            if (mac.settings.bulletPrefab == null) {
+                Debug.LogWarning("No bullet prefab for enemy using debug fallback");
+                var bullet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                bullet.transform.position = initialPosition;
+                bullet.transform.localScale = Vector3.one * 0.1f;
+                var rb = bullet.AddComponent<Rigidbody>();
+                rb.mass = 0.1f;
+                rb.isKinematic = false;
+                rb.AddForce(forceToApply);
+                Destroy(bullet, 100);
+            }
+            else {
+                var fp = mac.self.transform.FindChild("Firepoint");
+                var angle = Vector3.Angle(Vector3.right, direction);
+                fp.transform.rotation = Quaternion.Euler(0, 0, angle); 
+                var bullet = Instantiate(mac.settings.bulletPrefab, initialPosition, fp.transform.rotation);
+                //var rb = bullet.GetComponent<Rigidbody2D>();
+                //rb.AddForce(forceToApply);
+            }
+
         }
 
         public override int getInitialTickLifetime()
