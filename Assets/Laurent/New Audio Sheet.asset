@@ -21,5 +21,6 @@ MonoBehaviour:
   playerWeaponPickup: event:/Player/weaponPickup
   playerRaygun: event:/Player/raygun
   playerRepair: event:/Player/repair
+  revive: event:/Player/revive
   enemyDeath: event:/Enemy/death
   enemyBulletImpact: event:/Enemy/bulletImpact
