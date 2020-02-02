@@ -349,7 +349,11 @@ public class PlayerController : MonoBehaviour
         if (oldGrounded == false && isGrounded == true)
         {
             //Debug.Log("We just landed");
-            animator.SetTrigger("Land");
+            if (!animator.GetBool("Land"))
+            {
+                animator.SetTrigger("Land");
+            } 
+            
         }
     }
 
