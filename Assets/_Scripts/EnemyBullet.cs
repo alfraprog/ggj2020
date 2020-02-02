@@ -12,6 +12,8 @@ public class EnemyBullet : MonoBehaviour
 
     public float damage = 50f;
 
+    [FMODUnity.EventRef]
+    public string bulletImpact;
 
     // Update is called once per frame
     void Update()
@@ -27,9 +29,11 @@ public class EnemyBullet : MonoBehaviour
         }
         else
         {
-           // Debug.Log("Hitting something else " + other.gameObject.name);
+            Debug.Log("Hitting something else " + other.gameObject.name);
         }
 
+        if (bulletImpact != "")
+            AudioPlayer.PlaySFX(bulletImpact);
 
         Destroy(gameObject);
     }

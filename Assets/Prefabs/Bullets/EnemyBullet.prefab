@@ -72,6 +72,7 @@ MonoBehaviour:
   rigidBody: {fileID: 5266730917227263834}
   bulletSpeed: 7.5
   damage: 15
+  bulletImpact: event:/Enemy/bulletImpact
 --- !u!61 &8754151707204960901
 BoxCollider2D:
   m_ObjectHideFlags: 0

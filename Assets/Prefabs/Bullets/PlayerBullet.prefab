@@ -146,3 +146,4 @@ MonoBehaviour:
   rigidBody: {fileID: 3718007597123258531}
   bulletSpeed: 7.5
   damage: 50
+  bulletImpact: event:/Enemy/bulletImpact
