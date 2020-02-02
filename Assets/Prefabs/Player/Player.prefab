@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/Player/death
+  Event: event:/Player/disabled
   PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1

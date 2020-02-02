@@ -21,6 +21,8 @@ public class GameController : MonoBehaviour
     public bool musicActive = false;
     private bool gameover;
 
+    public GameObject bigExplosion;
+
     private void Awake()
     {
         instance = this;
@@ -44,6 +46,11 @@ public class GameController : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
         {
             Application.Quit();
+        }
+
+        if (Input.GetKey(KeyCode.P))
+        {
+            GameOver();
         }
     }
 
@@ -102,7 +109,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator WaitToGameover()
     {
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -114,6 +121,18 @@ public class GameController : MonoBehaviour
             return;
         }
 
+        Instantiate(bigExplosion, rooms[currentActiveRoom].transform.position, Quaternion.identity);
+
+
+        foreach (PlayerController player in players)
+        {
+            player.StopSounds();
+            Destroy(player.gameObject);
+        }
+
+        playerCount = 0;
+
+        players.Clear();
 
         gameover = true;
         StartCoroutine("WaitToGameover");

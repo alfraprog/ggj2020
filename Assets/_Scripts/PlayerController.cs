@@ -134,6 +134,12 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
+    public void StopSounds()
+    {
+        sfx.StoppingOverheat();
+    }
+
     // Update is called once per frame
     void Update()
     {
