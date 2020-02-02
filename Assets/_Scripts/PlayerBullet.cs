@@ -8,7 +8,8 @@ public class PlayerBullet : MonoBehaviour
 
     public float bulletSpeed = 7.5f;
 
-    //public GameObject impactEffect;
+    public GameObject impactEffect;
+
 
     public int damage = 50;
 
@@ -36,8 +37,10 @@ public class PlayerBullet : MonoBehaviour
             other.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
         }
 
+
         Destroy(gameObject);
 
+        Instantiate(impactEffect, transform.position, transform.rotation);
 
         if (bulletImpact != "")
             AudioPlayer.PlaySFX(bulletImpact);

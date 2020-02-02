@@ -160,6 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
+  destructionEffect: {fileID: 4697448093666756418, guid: 742afae546dcd494ba1f7acc98f7d2ef,
+    type: 3}
 --- !u!114 &4016624650980564858
 MonoBehaviour:
   m_ObjectHideFlags: 0

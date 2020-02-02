@@ -70,6 +70,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 5266730917227263834}
   bulletSpeed: 7.5
+  impactEffect: {fileID: 600160641876668598, guid: 85487c379767887488fd06d1afe44f05,
+    type: 3}
   damage: 15
   bulletImpact: event:/Enemy/bulletImpact
 --- !u!61 &8754151707204960901

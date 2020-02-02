@@ -8,7 +8,7 @@ public class EnemyBullet : MonoBehaviour
 
     public float bulletSpeed = 7.5f;
 
-    //public GameObject impactEffect;
+    public GameObject impactEffect;
 
     public float damage = 50f;
 
@@ -29,8 +29,10 @@ public class EnemyBullet : MonoBehaviour
         }
         else
         {
-            Debug.Log("Hitting something else " + other.gameObject.name);
+            //Debug.Log("Hitting something else " + other.gameObject.name);
         }
+
+        Instantiate(impactEffect, transform.position, transform.rotation);
 
         if (bulletImpact != "")
             AudioPlayer.PlaySFX(bulletImpact);

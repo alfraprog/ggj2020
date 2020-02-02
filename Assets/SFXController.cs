@@ -5,28 +5,47 @@ using UnityEngine;
 public class SFXController : MonoBehaviour
 {
 
-    public FMODUnity.StudioEventEmitter[] sfxController;
+    //public FMODUnity.StudioEventEmitter repairEvent;
+    public FMODUnity.StudioEventEmitter disabledEvent;
+    public FMODUnity.StudioParameterTrigger triggerParameters;
 
-    // Start is called before the first frame update
+    [FMODUnity.EventRef]
+    public string repairEventName;
+
+    FMOD.Studio.EventInstance repairEvent;
+
     void Start()
     {
-        
+      
+    }
+    public void DisablePlayer()
+    {
+        disabledEvent.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartRepairing()
     {
-        
+     
+
+       
+
+        repairEvent = FMODUnity.RuntimeManager.CreateInstance(repairEventName);
+        repairEvent.start();
+        //repairEvent.setParameterByName("end", 0f);
+        Debug.Log("Starting repair");
     }
 
-    public void PlaySFX(string eventName)
+    public void InterruptRepairing()
     {
-        
+         repairEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+         Debug.Log("Stopping repair");
     }
 
-    [System.Serializable]
-    public class FMODSFXWrapper
+    public void FullHealth()
     {
-        public GameObject soundEffectObject;
+        //repairEvent.SetParameter("end", 1f);
+        repairEvent.setParameterByName("end", 1f);
+        Debug.Log("Stopping repair");
     }
+
 }

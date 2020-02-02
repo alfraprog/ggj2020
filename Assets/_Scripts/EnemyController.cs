@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
 
     public float startingHealth = 100.0f;
     private float currentHealth;
+    public GameObject destructionEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,9 @@ public class EnemyController : MonoBehaviour
 
         if (currentHealth <= 0f)
         {
+            if (destructionEffect != null)
+                Instantiate(destructionEffect, transform.position, transform.rotation);
+
             Destroy(gameObject);
         }
     }

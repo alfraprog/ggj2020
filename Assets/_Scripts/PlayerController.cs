@@ -36,7 +36,11 @@ public class PlayerController : MonoBehaviour
     float playerHealth;
     public float maxHealth = 100.0f;
 
-    public float healAmount = 5.0f;
+    public float healAmount = 30.0f;
+
+    public SFXController sfx;
+
+    public GameObject healEffect;
 
     private enum PlayerState
     {
@@ -50,11 +54,21 @@ public class PlayerController : MonoBehaviour
 
     private Weapon activeWeapon;
     public Weapon starterWeapon;
+    private float oldRepairValue;
+    private bool startedRepairing;
+    private bool interruptRepairing;
+
+    private GameObject currentHealEffect;
 
     public void AddWeapon(Weapon weapon)
     {
-        activeWeapon = Instantiate(weapon);
-        activeWeapon.transform.parent = transform;
+        // destroy previous weapon
+        foreach (Transform child in firePoint.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        activeWeapon = Instantiate(weapon, firePoint.transform);
     }
 
 
@@ -67,7 +81,9 @@ public class PlayerController : MonoBehaviour
             uiController.UpdateHealth(playerHealth);
             if (playerHealth <= maxHealth / 2.0f)
             {
+                sfx.DisablePlayer();
                 currentState = PlayerState.Disabled;
+                interruptRepairing = true;
                 // stop horizontal movement
                 rb.velocity = new Vector2(0f, rb.velocity.y);
             }
@@ -76,14 +92,17 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   
+    {
+        // create as child of this object
+        currentHealEffect = Instantiate(healEffect, transform);
+        currentHealEffect.SetActive(false);
+
         if (starterWeapon == null)
         {
             Debug.LogError("We have no weapon!!!!");
         }
 
-        activeWeapon = Instantiate(starterWeapon);
-        activeWeapon.transform.parent = transform;
+        activeWeapon = Instantiate(starterWeapon, firePoint.transform);
 
         playerHealth = maxHealth;
         playerIndex = GameController.instance.GetSpawnedPlayerCount();
@@ -91,13 +110,48 @@ public class PlayerController : MonoBehaviour
     }
 
 
+
+    public void Repair(InputAction.CallbackContext context)
+    {
+        if (currentState == PlayerState.Disabled)
+            return;
+
+        Debug.Log("The repair value " + repairValue);
+        repairValue = context.action.ReadValue<float>();
+        if (repairValue > 0 && oldRepairValue == 0)
+        {
+            startedRepairing = true;
+        }
+
+        if (repairValue == 0 && oldRepairValue > 0)
+        {
+            interruptRepairing = true;
+        }
+
+
+    }
     // Update is called once per frame
     void Update()
     {
-        if (repairValue > 0f )
+        if (startedRepairing )
+        {
+            sfx.StartRepairing();
+
+            currentHealEffect.SetActive(true);
+            //currentHealEffect.transform.position = transform.position;
+        }
+
+        if (interruptRepairing)
+        {
+            sfx.InterruptRepairing();
+            currentHealEffect.SetActive(false);
+        }
+
+
+        if (repairValue > 0f  && currentState == PlayerState.Normal)
         {
             GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Player");
-
+        
             foreach (GameObject gameObjectToTest in gameObjects)
             {
                 if (gameObjectToTest == gameObject)
@@ -108,7 +162,7 @@ public class PlayerController : MonoBehaviour
                     if (Vector2.Distance(gameObjectToTest.transform.position, gameObject.transform.position) < healDistance)
                     {
                         
-                        gameObjectToTest.GetComponent<PlayerController>().ReceiveHealing( healAmount );
+                        gameObjectToTest.GetComponent<PlayerController>().ReceiveHealing( healAmount * Time.deltaTime );
                     }
                 }
             }
@@ -136,7 +190,17 @@ public class PlayerController : MonoBehaviour
         oldGrounded = isGrounded;
 
         // Repair needs to be button bashed
-        repairValue = 0f;
+        //repairValue = 0f;
+        //Debug.Log("Old repair " + oldRepairValue);
+        //Debug.Log("repair value " + repairValue);
+
+        oldRepairValue = repairValue;
+        interruptRepairing = false;
+        startedRepairing = false;
+        // repairValue = 0;
+
+
+
     }
 
     void UpdateTimers()
@@ -182,8 +246,7 @@ public class PlayerController : MonoBehaviour
             if (activeWeapon.ammo <= 0 && !activeWeapon.isInfinite)
             {
                 Debug.Log("Ran out of bullets");
-                activeWeapon = Instantiate(starterWeapon);
-                activeWeapon.transform.parent = transform;
+                AddWeapon(starterWeapon);
             }
         }
     }
@@ -201,12 +264,19 @@ public class PlayerController : MonoBehaviour
 
     public void ReceiveHealing(float healAmount)
     {
-        playerHealth += healAmount;
-
-        if (playerHealth >= maxHealth)
+        if (playerHealth < maxHealth)
         {
-            playerHealth = maxHealth;
-            currentState = PlayerState.Normal;
+            playerHealth += healAmount;
+            if (playerHealth >= maxHealth)
+            { 
+                playerHealth = maxHealth;
+                currentState = PlayerState.Normal;
+                sfx.FullHealth();
+                
+                Debug.Log("Went to maximum");
+            }
+
+
         }
 
         uiController.UpdateHealth(playerHealth);
@@ -255,19 +325,16 @@ public class PlayerController : MonoBehaviour
         {
             firePoint.transform.localPosition = new Vector2(-weaponOffset, 0);
             firePoint.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180.0f));
+            activeWeapon.transform.localScale = new Vector2(1, -1);
         }
         else if (moveDirection.x > 0.0f)
         {
             firePoint.transform.localPosition = new Vector2(weaponOffset, 0);
             firePoint.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            activeWeapon.transform.localScale = new Vector2(1, 1);
         }
     }
 
-    public void Repair(InputAction.CallbackContext context)
-    {
-        Debug.Log("The repair value "+repairValue);
-       repairValue = context.action.ReadValue<float>();
-    }
 
     void CheckIsLanded()
     {

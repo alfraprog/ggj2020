@@ -43,7 +43,7 @@
                     "id": "6c96bbeb-8949-4308-8192-55aac6a2eb06",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": ""
                 }
             ],
             "bindings": [
