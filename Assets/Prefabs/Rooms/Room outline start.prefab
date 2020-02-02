@@ -2163,7 +2163,12 @@ MonoBehaviour:
   - {fileID: 3536210762722750445}
   - {fileID: 3536210761520792144}
   - {fileID: 3536210761307056553}
+  enemySpawnPositions: []
   roomActivation: {fileID: 0}
+  enemySpawnCount: 5
+  potentialEnemiesToSpawn: []
+  leftBlocker: {fileID: 0}
+  rightBlocker: {fileID: 0}
 --- !u!1 &2899376108243464055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,12 +2214,12 @@ PrefabInstance:
     - target: {fileID: 1814814063777215589, guid: 8af331c487a82854ebcbe31a3eedbedf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.46
+      value: 7.29
       objectReference: {fileID: 0}
     - target: {fileID: 1814814063777215589, guid: 8af331c487a82854ebcbe31a3eedbedf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.46
+      value: -5.31
       objectReference: {fileID: 0}
     - target: {fileID: 1814814063777215589, guid: 8af331c487a82854ebcbe31a3eedbedf,
         type: 3}
@@ -2290,12 +2295,12 @@ PrefabInstance:
     - target: {fileID: 1814814063777215589, guid: 8af331c487a82854ebcbe31a3eedbedf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.04
+      value: 3.6399996
       objectReference: {fileID: 0}
     - target: {fileID: 1814814063777215589, guid: 8af331c487a82854ebcbe31a3eedbedf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.03
+      value: -5.07
       objectReference: {fileID: 0}
     - target: {fileID: 1814814063777215589, guid: 8af331c487a82854ebcbe31a3eedbedf,
         type: 3}
@@ -2371,12 +2376,12 @@ PrefabInstance:
     - target: {fileID: 1814814063777215589, guid: 8af331c487a82854ebcbe31a3eedbedf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.39
+      value: 9.46
       objectReference: {fileID: 0}
     - target: {fileID: 1814814063777215589, guid: 8af331c487a82854ebcbe31a3eedbedf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.62
+      value: -5.12
       objectReference: {fileID: 0}
     - target: {fileID: 1814814063777215589, guid: 8af331c487a82854ebcbe31a3eedbedf,
         type: 3}
