@@ -48,3 +48,4 @@ MonoBehaviour:
   timeBetweenShots: 0.1
   ammo: 100
   isInfinite: 0
+  soundEffectName: event:/Player/raygun

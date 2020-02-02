@@ -4,7 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MusicTest.unity
+    guid: 53400f1a7b57bb34788c64b0fa949eb1
+  - enabled: 1
+    path: Assets/Scenes/JustOne.unity
+    guid: bd838497d3492674ca872df2fc22bbc9
+  - enabled: 1
+    path: Assets/Scenes/LevelTest.unity
+    guid: d98ba961b042c64499f4b6c5602b57ff
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 64e73da96d78e754c81babe93d812d27,
       type: 2}

@@ -10,6 +10,11 @@ public class AudioPlayer : MonoBehaviour
 
     public FmodAudioData fmodAudio;
 
+    public FMODUnity.StudioEventEmitter musicEmitter;
+
+
+
+
     private void Awake()
     {
         instance = this;
@@ -23,8 +28,7 @@ public class AudioPlayer : MonoBehaviour
     public static void PlaySFX(string nameFromFMODAudioData)
     {
         FMODUnity.RuntimeManager.PlayOneShot(nameFromFMODAudioData);
-    } 
-
+    }
 
 
 

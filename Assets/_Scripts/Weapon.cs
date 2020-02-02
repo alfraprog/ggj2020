@@ -11,6 +11,9 @@ public class Weapon : MonoBehaviour
     public float ammo = 100.0f;
     public bool isInfinite = false;
 
+    [FMODUnity.EventRef]
+    public string soundEffectName;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +22,15 @@ public class Weapon : MonoBehaviour
 
     public void Shoot(GameObject firePoint)
     {
+
         if (shootCountdown < 0 )
         {
             if (!isInfinite)
             {
                 ammo--;
             }
+            AudioPlayer.PlaySFX(soundEffectName);
+
             Instantiate(playerBulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
             AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.shotgun);
             shootCountdown = timeBetweenShots;
