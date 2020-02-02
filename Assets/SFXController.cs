@@ -7,6 +7,7 @@ public class SFXController : MonoBehaviour
 
     //public FMODUnity.StudioEventEmitter repairEvent;
     public FMODUnity.StudioEventEmitter disabledEvent;
+    public FMODUnity.StudioEventEmitter overheatEvent;
     public FMODUnity.StudioParameterTrigger triggerParameters;
 
     [FMODUnity.EventRef]
@@ -25,10 +26,6 @@ public class SFXController : MonoBehaviour
 
     public void StartRepairing()
     {
-     
-
-       
-
         repairEvent = FMODUnity.RuntimeManager.CreateInstance(repairEventName);
         repairEvent.start();
         //repairEvent.setParameterByName("end", 0f);
@@ -47,5 +44,23 @@ public class SFXController : MonoBehaviour
         repairEvent.setParameterByName("end", 1f);
         Debug.Log("Stopping repair");
     }
+
+
+    public void StartingToOverheat()
+    {
+        overheatEvent.Play();
+    }
+
+    public void StoppingOverheat()
+    {
+        overheatEvent.Stop();
+    }
+
+    public void PlayerExploded()
+    {
+        // HACKI HACKI KUUCHEN
+        triggerParameters.enabled = true;
+    }
+
 
 }

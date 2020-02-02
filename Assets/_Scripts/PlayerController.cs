@@ -78,9 +78,13 @@ public class PlayerController : MonoBehaviour
         if (currentState == PlayerState.Normal)
         {
             playerHealth -= damageValue;
+            //animator.SetFloat("health", playerHealth);
+
             uiController.UpdateHealth(playerHealth);
-            if (playerHealth <= maxHealth / 2.0f)
+
+            if (playerHealth < maxHealth / 2.0f)
             {
+                sfx.StartingToOverheat();
                 sfx.DisablePlayer();
                 currentState = PlayerState.Disabled;
                 interruptRepairing = true;
@@ -102,7 +106,7 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("We have no weapon!!!!");
         }
 
-        activeWeapon = Instantiate(starterWeapon, firePoint.transform);
+        AddWeapon(starterWeapon);
 
         playerHealth = maxHealth;
         playerIndex = GameController.instance.GetSpawnedPlayerCount();
@@ -209,16 +213,16 @@ public class PlayerController : MonoBehaviour
         {
             waitTime -= Time.deltaTime;
         }
-
-
     }
 
     void DoDisabledLogic()
     {
         playerHealth -= damageOverTime * Time.deltaTime;
+        animator.SetFloat("health", playerHealth);
         uiController.UpdateHealth(playerHealth);
         if (playerHealth <= 0)
         {
+            sfx.PlayerExploded();
             GameController.instance.GameOver();
         }
     }
@@ -267,12 +271,15 @@ public class PlayerController : MonoBehaviour
         if (playerHealth < maxHealth)
         {
             playerHealth += healAmount;
+
+            // maybe we should re enable the player when above half health
+
             if (playerHealth >= maxHealth)
             { 
                 playerHealth = maxHealth;
                 currentState = PlayerState.Normal;
                 sfx.FullHealth();
-                
+                sfx.StoppingOverheat();
                 Debug.Log("Went to maximum");
             }
 
@@ -280,6 +287,7 @@ public class PlayerController : MonoBehaviour
         }
 
         uiController.UpdateHealth(playerHealth);
+        animator.SetFloat("health", playerHealth);
     }
 
     public void EnableMovement()

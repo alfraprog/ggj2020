@@ -26,6 +26,8 @@ public class EnemyBullet : MonoBehaviour
         if (other.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerController>().DamagePlayer(damage);
+            if (bulletImpact != "")
+                AudioPlayer.PlaySFX(bulletImpact);
         }
         else
         {
@@ -34,8 +36,7 @@ public class EnemyBullet : MonoBehaviour
 
         Instantiate(impactEffect, transform.position, transform.rotation);
 
-        if (bulletImpact != "")
-            AudioPlayer.PlaySFX(bulletImpact);
+
 
         Destroy(gameObject);
     }

@@ -35,6 +35,8 @@ public class PlayerBullet : MonoBehaviour
         if (other.tag == "Enemy")
         {
             other.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
+            if (bulletImpact != "")
+                AudioPlayer.PlaySFX(bulletImpact);
         }
 
 
@@ -42,8 +44,7 @@ public class PlayerBullet : MonoBehaviour
 
         Instantiate(impactEffect, transform.position, transform.rotation);
 
-        if (bulletImpact != "")
-            AudioPlayer.PlaySFX(bulletImpact);
+
     }
 
     private void OnBecameInvisible()

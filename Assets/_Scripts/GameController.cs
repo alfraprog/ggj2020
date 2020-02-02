@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     private int currentSpawnedPlayerCount = 0;
 
     public bool musicActive = false;
+    private bool gameover;
 
     private void Awake()
     {
@@ -96,9 +97,23 @@ public class GameController : MonoBehaviour
         return currentSpawnedPlayerCount++;
     }
 
+    IEnumerator WaitToGameover()
+    {
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+
     public void GameOver()
     {
-        Debug.Log("Game over!");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (gameover)
+        {
+            return;
+        }
+
+
+        gameover = true;
+        StartCoroutine("WaitToGameover");
+
     }
 }
