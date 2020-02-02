@@ -11,6 +11,45 @@ TextureImporter:
   - first:
       213: 3054209852272860191
     second: Energy Bullet_2
+  - first:
+      213: -8628217373123860585
+    second: Energy Bullet_0
+  - first:
+      213: 3004098754850310977
+    second: Energy Bullet_1
+  - first:
+      213: 3847270894721231879
+    second: Energy Bullet_2
+  - first:
+      213: -5084829993320840520
+    second: Energy Bullet_hit_0
+  - first:
+      213: -3629823130968561308
+    second: Energy Bullet_hit_1
+  - first:
+      213: 976751679271291379
+    second: Energy Bullet_hit_2
+  - first:
+      213: 8410875186855291377
+    second: Energy Bullet_hit_3
+  - first:
+      213: -3834891399873471842
+    second: Energy Bullet_hit_4
+  - first:
+      213: 4136726301545845468
+    second: Energy Bullet_hit_5
+  - first:
+      213: 1953298377669027997
+    second: Energy Bullet_hit_6
+  - first:
+      213: -11857119416477974
+    second: Energy Bullet_hit_7
+  - first:
+      213: 880056680213209369
+    second: Energy Bullet_hit_8
+  - first:
+      213: -8430559282681522369
+    second: Energy Bullet_hit_9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -99,6 +138,69 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 797291e630a624880800000000000000
+      internalID: -8628217373123860585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Bullet_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14bcb01b6e3b0b920800000000000000
+      internalID: 3004098754850310977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Bullet_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70cee8abe70446530800000000000000
+      internalID: 3847270894721231879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Bullet_hit_0
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 32
         height: 32
@@ -109,14 +211,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc1c6f76815636120800000000000000
-      internalID: 2405877781443822028
+      spriteID: 8b20cd8cf0e0f69b0800000000000000
+      internalID: -5084829993320840520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Energy Bullet_1
+      name: Energy Bullet_hit_1
       rect:
         serializedVersion: 2
         x: 32
@@ -130,14 +232,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1931b4c1841421640800000000000000
-      internalID: 5049169910203880337
+      spriteID: 4696f11181740adc0800000000000000
+      internalID: -3629823130968561308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Energy Bullet_2
+      name: Energy Bullet_hit_2
       rect:
         serializedVersion: 2
         x: 64
@@ -151,8 +253,155 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1cd832cdabb26a20800000000000000
-      internalID: 3054209852272860191
+      spriteID: 3f94bbc2a7e1e8d00800000000000000
+      internalID: 976751679271291379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Bullet_hit_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f928a27b6e69b470800000000000000
+      internalID: 8410875186855291377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Bullet_hit_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9a5756079ab7cac0800000000000000
+      internalID: -3834891399873471842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Bullet_hit_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd2d7a867aa986930800000000000000
+      internalID: 4136726301545845468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Bullet_hit_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d982f4586828b1b10800000000000000
+      internalID: 1953298377669027997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Bullet_hit_7
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae61f114300e5dff0800000000000000
+      internalID: -11857119416477974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Bullet_hit_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911615e43e6963c00800000000000000
+      internalID: 880056680213209369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Bullet_hit_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3755e9dff2a00b80800000000000000
+      internalID: -8430559282681522369
       vertices: []
       indices: 
       edges: []
