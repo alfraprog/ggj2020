@@ -19,6 +19,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         [Range(0.1f, 1)]
         public float moveSpeed = 1f;
+        public float jumpForce = 2f;
 
         [Range(0.1f, 2f)]
         public float decisionsPerSec;
@@ -120,13 +121,16 @@ public class EnemyBehaviour : MonoBehaviour
     {
         public override void apply(MealyMachine mac)
         {
-            var rb = mac.self.GetComponent<Rigidbody>();
+            var rb = mac.self.GetComponent<Rigidbody2D>();
+            
             if (rb == null)
             {
                 //Debug.Log("Cannot jump don't have rigitbody");
             }
             else {
-                rb.AddForce(Vector3.up);
+                Debug.Log("applying jump force");
+                rb.AddForce(new Vector2(0, mac.settings.jumpForce), ForceMode2D.Impulse);
+                //rb.AddForce(Vector3.up);
             }
         }
 
@@ -314,8 +318,13 @@ public class EnemyBehaviour : MonoBehaviour
                 }
             }
 
-            if (transform.position.y > mac.self.transform.position.y + 2)
+            var xDistToTarget = Mathf.Abs(transform.position.x - mac.selfTransform.position.x);
+
+            var allowJump = distToTarget < mac.settings.radiusOfAwareness && allowMoveToTarget && xDistToTarget > 3;
+
+            if (transform.position.y > mac.self.transform.position.y + 4 && allowJump)
             {
+                Debug.Log("Attempting to jump");
                 var dir = transform.position - mac.selfTransform.position;
                 var acts = jumpInDirection(dir);
                 foreach (var ac in acts) {
@@ -383,7 +392,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             var ret = new List<Action>();
 
-            foreach (var a in moveToTarget(player.transform, 5, mac.settings.respectHomeWhenAttackingPlayer))
+            foreach (var a in moveToTarget(player.transform, 3, mac.settings.respectHomeWhenAttackingPlayer))
             {
                 ret.Add(a);
             }

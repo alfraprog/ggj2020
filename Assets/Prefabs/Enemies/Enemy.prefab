@@ -179,7 +179,8 @@ MonoBehaviour:
     bulletPrefab: {fileID: 2742637065619069218, guid: e60ea95ea8dac114b89d896906118475,
       type: 3}
     moveSpeed: 0.1
-    decisionsPerSec: 1
+    jumpForce: 2
+    decisionsPerSec: 1.2
     shotsPerFireDecision: 1
     shootSkill: 1
     agroness: 1
@@ -203,10 +204,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
