@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 8793042048935384262, guid: 84ae6e221429e3f4693c0125dc05e274, type: 3}
+  weaponPickupSound: event:/Player/weaponPickup
 --- !u!212 &2957627018766129000
 SpriteRenderer:
   m_ObjectHideFlags: 0

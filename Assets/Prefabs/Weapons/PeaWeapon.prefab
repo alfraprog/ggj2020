@@ -48,3 +48,4 @@ MonoBehaviour:
   timeBetweenShots: 0.75
   ammo: 0
   isInfinite: 1
+  soundEffectName: event:/Player/shotgun

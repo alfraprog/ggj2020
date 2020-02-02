@@ -6,6 +6,9 @@ public class WeaponPickup : MonoBehaviour
 {
     public Weapon weapon;
 
+    [FMODUnity.EventRef]
+    public string weaponPickupSound;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,7 @@ public class WeaponPickup : MonoBehaviour
         if (other.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerController>().AddWeapon(weapon);
+            AudioPlayer.PlaySFX(weaponPickupSound);
             Destroy(gameObject);
         }
     }

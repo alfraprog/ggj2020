@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour
     public int playerCount;
     private int currentSpawnedPlayerCount = 0;
 
+    public bool musicActive = false;
+
     private void Awake()
     {
         instance = this;
@@ -28,8 +30,11 @@ public class GameController : MonoBehaviour
     {
         if (rooms.Count < 1)
         {
-            Debug.LogWarning("No rooms in game controller");
+            Debug.LogError("No rooms in game controller");
+            
         }
+       // if (musicActive)
+       //     AudioPlayer.PlayMusic(AudioPlayer.instance.fmodAudio.musicTune01);
     }
 
     // Update is called once per frame
@@ -51,8 +56,6 @@ public class GameController : MonoBehaviour
             players.Add(player.GetComponent<PlayerController>());
             PositionPlayer(i);
         }
-
-
        
     }
 
