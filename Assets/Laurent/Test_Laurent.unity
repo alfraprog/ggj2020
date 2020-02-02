@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 1947382233}
   - component: {fileID: 1947382236}
   - component: {fileID: 1947382235}
+  - component: {fileID: 1947382237}
   m_Layer: 0
   m_Name: AudioLP
   m_TagString: Untagged
@@ -342,6 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fmodAudio: {fileID: 11400000, guid: 533a4462d35b547348e646e6e83db115, type: 2}
+  musicEmitter: {fileID: 0}
 --- !u!4 &1947382234
 Transform:
   m_ObjectHideFlags: 0
@@ -371,8 +373,10 @@ MonoBehaviour:
   CollisionTag: 
   Emitters:
   - Target: {fileID: 1947382236}
-    Params: []
-  TriggerEvent: 1
+    Params:
+    - Name: end
+      Value: 1
+  TriggerEvent: 11
 --- !u!114 &1947382236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,15 +390,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/Player/repair
+  Event: event:/Player/overheat
   PlayEvent: 1
   StopEvent: 2
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params:
-  - Name: end
-    Value: 0
+  Params: []
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
+--- !u!114 &1947382237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947382232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f0b3c430ec1452c8580d5bc85c9c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fmodParam: {fileID: 1947382235}
