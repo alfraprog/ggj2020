@@ -22,5 +22,6 @@ MonoBehaviour:
   playerRaygun: event:/Player/raygun
   playerRepair: event:/Player/repair
   revive: event:/Player/revive
+  repairMe: event:/UI/repairMeVoice
   enemyDeath: event:/Enemy/death
   enemyBulletImpact: event:/Enemy/bulletImpact
