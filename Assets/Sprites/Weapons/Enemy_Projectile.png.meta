@@ -20,6 +20,51 @@ TextureImporter:
   - first:
       213: -5756119978050341128
     second: Enemy_Projectile_5
+  - first:
+      213: 4972350540686710111
+    second: Enemy_Projectile_0
+  - first:
+      213: -2209115102606807258
+    second: Enemy_Projectile_1
+  - first:
+      213: -2887238760549293782
+    second: Enemy_Projectile_2
+  - first:
+      213: 6616005175627838187
+    second: Enemy_Projectile_3
+  - first:
+      213: 2910657126816876177
+    second: Enemy_Projectile_4
+  - first:
+      213: 6265987933479840705
+    second: Enemy_Projectile_5
+  - first:
+      213: -660334542647150115
+    second: Enemy_Projectile_hit_0
+  - first:
+      213: 3538023556939136876
+    second: Enemy_Projectile_hit_1
+  - first:
+      213: 4620577126163907150
+    second: Enemy_Projectile_hit_2
+  - first:
+      213: -1726868214432451408
+    second: Enemy_Projectile_hit_3
+  - first:
+      213: -5842263333627499967
+    second: Enemy_Projectile_hit_4
+  - first:
+      213: 1785920527392115908
+    second: Enemy_Projectile_hit_5
+  - first:
+      213: 946290588629098196
+    second: Enemy_Projectile_hit_6
+  - first:
+      213: -2191166799730272027
+    second: Enemy_Projectile_hit_7
+  - first:
+      213: -5642143822295263940
+    second: Enemy_Projectile_hit_8
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -112,14 +157,14 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 630930e201c563570800000000000000
-      internalID: 8446039375741161526
+      spriteID: f555a5cd876510540800000000000000
+      internalID: 4972350540686710111
       vertices: []
       indices: 
       edges: []
@@ -133,14 +178,14 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 040e1c2613c68c200800000000000000
-      internalID: 200529142784057408
+      spriteID: 62fab21c485a751e0800000000000000
+      internalID: -2209115102606807258
       vertices: []
       indices: 
       edges: []
@@ -154,14 +199,14 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11b0b94706ca1f5c0800000000000000
-      internalID: -4183373048577324271
+      spriteID: a2168bff4a77ee7d0800000000000000
+      internalID: -2887238760549293782
       vertices: []
       indices: 
       edges: []
@@ -175,14 +220,14 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d2d9a178012a9760800000000000000
-      internalID: 7465315652470428375
+      spriteID: be2717577a5c0db50800000000000000
+      internalID: 6616005175627838187
       vertices: []
       indices: 
       edges: []
@@ -196,14 +241,14 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e586e0702f0d56c70800000000000000
-      internalID: 8963800371269888094
+      spriteID: 19601ea4c3bb46820800000000000000
+      internalID: 2910657126816876177
       vertices: []
       indices: 
       edges: []
@@ -217,14 +262,203 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f6b7cf80672e10b0800000000000000
-      internalID: -5756119978050341128
+      spriteID: 1cb23fda3d245f650800000000000000
+      internalID: 6265987933479840705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Projectile_hit_0
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd9b8986b3506d6f0800000000000000
+      internalID: -660334542647150115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Projectile_hit_1
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6f32560ea5991130800000000000000
+      internalID: 3538023556939136876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Projectile_hit_2
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e428b465a669f1040800000000000000
+      internalID: 4620577126163907150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Projectile_hit_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b437d0228ee808e0800000000000000
+      internalID: -1726868214432451408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Projectile_hit_4
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14ae7d2a37c1ceea0800000000000000
+      internalID: -5842263333627499967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Projectile_hit_5
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc0948e14dd8c810800000000000000
+      internalID: 1785920527392115908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Projectile_hit_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4de5885d646e12d00800000000000000
+      internalID: 946290588629098196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Projectile_hit_7
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e8927aa7696791e0800000000000000
+      internalID: -2191166799730272027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Projectile_hit_8
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c351d64461413b1b0800000000000000
+      internalID: -5642143822295263940
       vertices: []
       indices: 
       edges: []
