@@ -31,6 +31,8 @@ public class FmodAudioData : ScriptableObject
     [FMODUnity.EventRef]
     public string revive = null;
 
+    [FMODUnity.EventRef]
+    public string repairMe = null;
 
 
     [Header("Enemy")]

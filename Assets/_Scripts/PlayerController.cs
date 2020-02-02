@@ -314,7 +314,11 @@ public class PlayerController : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         if (currentState == PlayerState.Disabled)
+        {
+            AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.repairMe);
             return;
+        }
+
 
         // Make sure that we have a near 0 vertical velocity to avoid a bug when immediatly jumping when landing and borking the isGrounded
         if (waitTime <= 0f && isGrounded && Mathf.Abs(rb.velocity.y) < 0.01f)
