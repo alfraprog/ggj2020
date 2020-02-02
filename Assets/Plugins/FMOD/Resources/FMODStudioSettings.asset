@@ -18,9 +18,9 @@ MonoBehaviour:
   sourceProjectPath: ../ggj2020_fmod/ggj2020_fmod.fspro
   sourceBankPath: Assets/FmodAssets
   SourceBankPathUnformatted: 
-  AutomaticEventLoading: 1
+  AutomaticEventLoading: 0
   BankLoadType: 0
-  AutomaticSampleLoading: 0
+  AutomaticSampleLoading: 1
   EncryptionKey: 
   ImportType: 0
   TargetAssetPath: 
@@ -83,5 +83,6 @@ MonoBehaviour:
   - Music
   - Player
   - UI
-  BanksToLoad: []
+  BanksToLoad:
+  - 
   LiveUpdatePort: 9264

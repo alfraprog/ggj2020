@@ -709,8 +709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1242653305840740669, guid: ad5e8a54240810f489b81ef373357bd1,
     type: 3}
-  rooms:
-  - {fileID: 0}
+  rooms: []
   playerCount: 2
   musicActive: 0
 --- !u!114 &2995142335449017010
