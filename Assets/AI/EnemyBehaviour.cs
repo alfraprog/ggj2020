@@ -17,6 +17,9 @@ public class EnemyBehaviour : MonoBehaviour
 
         public GameObject bulletPrefab;
 
+        [Range(0.1f, 1)]
+        public float moveSpeed = 1f;
+
         [Range(0.1f, 2f)]
         public float decisionsPerSec;
         public int shotsPerFireDecision;
@@ -28,6 +31,8 @@ public class EnemyBehaviour : MonoBehaviour
         public float agroness;
 
         public Transform home;
+        public bool spawnIsHome = false;
+        public bool respectHomeWhenAttackingPlayer = true;
 
         public float maxDistanceFromHome;
         public bool returnToHomeOnIdle;
@@ -41,16 +46,20 @@ public class EnemyBehaviour : MonoBehaviour
     public BehaviourSettings settings = new BehaviourSettings()
     {
         brainType = BrainType.GROUND_UNIT,
+        moveSpeed = 0.01f,
         decisionsPerSec = 1f,
         shootSkill = 1,
         agroness = 0.5f,
         shotsPerFireDecision = 1,
+        spawnIsHome = true,
+        respectHomeWhenAttackingPlayer = true,
         maxDistanceFromHome = 2f,
         radiusOfAwareness = 5f,
         canRepair = true
     };
 
     public abstract class Action {
+        public static float moveScaler = 1f / 10f;
         public readonly static Action NOP = new NopAction();
         public int remainingTickLifetime;
 
@@ -81,8 +90,9 @@ public class EnemyBehaviour : MonoBehaviour
 
     private class LeftAction : Action {
         public override void apply(MealyMachine mac) {
+            float ms = mac.settings.moveSpeed * Action.moveScaler;
             //Debug.Log("Going left");
-            mac.selfTransform.position = mac.selfTransform.position - new Vector3(mac.speed, 0, 0);
+            mac.selfTransform.position = mac.selfTransform.position - new Vector3(ms, 0, 0);
         }
 
         public override int getInitialTickLifetime() {
@@ -90,13 +100,14 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    private class RightAction : Action 
+    private class RightAction : Action  
     {
         public override void apply(MealyMachine mac)
         {
             //Debug.Log("Going right");
+            float ms = mac.settings.moveSpeed * Action.moveScaler;
 
-            mac.selfTransform.position = mac.selfTransform.position + new Vector3(mac.speed, 0, 0);
+            mac.selfTransform.position = mac.selfTransform.position + new Vector3(ms, 0, 0);
         }
 
         public override int getInitialTickLifetime()
@@ -199,8 +210,20 @@ public class EnemyBehaviour : MonoBehaviour
             this.mac = machine;
         }
 
+        public void modifyBehaviour() {
+            if (mac.enemyController != null) {
+                var currentHealth = mac.enemyController.GetCurrentHealth();
+                if (currentHealth <= 50) {
+                    mac.settings.moveSpeed = mac.initialMoveSpeed * 2;
+                    mac.settings.respectHomeWhenAttackingPlayer = false;
+                }
+            }
+        }
+
         public virtual void tick() {
             //Debug.Log(actionDecisionCoolDownTimeSec);
+
+            modifyBehaviour();
 
             //Debug.Log("Diff: " + actionDecisionCoolDownTimeSec + " - " + Time.fixedDeltaTime);
             actionDecisionCoolDownTimeSec -= Time.fixedDeltaTime;
@@ -360,7 +383,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             var ret = new List<Action>();
 
-            foreach (var a in moveToTarget(player.transform, 5, true))
+            foreach (var a in moveToTarget(player.transform, 5, mac.settings.respectHomeWhenAttackingPlayer))
             {
                 ret.Add(a);
             }
@@ -380,6 +403,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         public List<Action> getIdleActions() {
             var ret = new List<Action>();
+
             if (mac.settings.returnToHomeOnIdle) {
                 foreach (var ac in moveToTarget(mac.settings.home, 0, false)) {
                     ret.Add(ac);
@@ -519,15 +543,18 @@ public class EnemyBehaviour : MonoBehaviour
         public Transform selfTransform;
         public GameObject self;
         public BehaviourSettings settings;
+        public EnemyController enemyController;
         public List<GameObject> players = new List<GameObject>();
 
-        public float speed = 0.01f;
+        public float initialMoveSpeed;
 
-        public MealyMachine(GameObject self, BehaviourSettings settings) {
+        public MealyMachine(GameObject self, BehaviourSettings settings, EnemyController enemyController) {
             this.selfTransform = self.transform;
             this.self = self;
             brain = createBrainOfType(brainType);
             this.settings = settings;
+            this.initialMoveSpeed = settings.moveSpeed;
+            this.enemyController = enemyController;
         }
 
 
@@ -574,7 +601,14 @@ public class EnemyBehaviour : MonoBehaviour
     MealyMachine mealyMachine;
 
     void Start() {
-        mealyMachine = new MealyMachine(gameObject, settings);
+        if (settings.home == null && settings.spawnIsHome) {
+            var go = new GameObject("Home of " + gameObject.name);
+            settings.home = go.transform;
+            settings.home.position = gameObject.transform.position;
+        }
+
+        var enemyController = GetComponent<EnemyController>();
+        mealyMachine = new MealyMachine(gameObject, settings, enemyController);        
     }
 
     void FixedUpdate()

@@ -31,4 +31,9 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public float GetCurrentHealth() 
+    {
+        return currentHealth;
+    }
 }

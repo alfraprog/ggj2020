@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc6f44323ac6cd4cb3198157c4689bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHealth: 100
 --- !u!114 &4016624650980564858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,15 +176,18 @@ MonoBehaviour:
     brainType: 1
     bulletPrefab: {fileID: 2742637065619069218, guid: e60ea95ea8dac114b89d896906118475,
       type: 3}
+    moveSpeed: 0.1
     decisionsPerSec: 1
     shotsPerFireDecision: 1
     shootSkill: 1
     agroness: 1
     home: {fileID: 0}
-    maxDistanceFromHome: 2
-    returnToHomeOnIdle: 0
+    spawnIsHome: 1
+    respectHomeWhenAttackingPlayer: 1
+    maxDistanceFromHome: 3
+    returnToHomeOnIdle: 1
     radiusOfAwareness: 20
-    canRepair: 1
+    canRepair: 0
     eagernessToSeekoutRepair: 0
 --- !u!50 &620781521
 Rigidbody2D:
