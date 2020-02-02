@@ -20,6 +20,57 @@ TextureImporter:
   - first:
       213: 1727776815544961336
     second: NES Zapper Projectile_5
+  - first:
+      213: -8083351924935434569
+    second: NES Zapper Projectile_0
+  - first:
+      213: -3580368820685407955
+    second: NES Zapper Projectile_1
+  - first:
+      213: -7083422661166824357
+    second: NES Zapper Projectile_2
+  - first:
+      213: 5272662898961137825
+    second: NES Zapper Projectile_3
+  - first:
+      213: 4036451045020092036
+    second: NES Zapper Projectile_4
+  - first:
+      213: -7989991362390711252
+    second: NES Zapper Projectile_5
+  - first:
+      213: -4763456255033953626
+    second: NES Zapper Projectile_hit_0
+  - first:
+      213: -5058003634002642316
+    second: NES Zapper Projectile_hit_1
+  - first:
+      213: 3874436992069746969
+    second: NES Zapper Projectile_hit_2
+  - first:
+      213: 1803801480959237141
+    second: NES Zapper Projectile_hit_3
+  - first:
+      213: -4723694762642906137
+    second: NES Zapper Projectile_hit_4
+  - first:
+      213: 3334274282128026203
+    second: NES Zapper Projectile_hit_5
+  - first:
+      213: 2864594945900000974
+    second: NES Zapper Projectile_hit_6
+  - first:
+      213: 4852471513427787875
+    second: NES Zapper Projectile_hit_0
+  - first:
+      213: -8631638644605688208
+    second: NES Zapper Projectile_hit_1
+  - first:
+      213: 7677094367879796733
+    second: NES Zapper Projectile_hit_2
+  - first:
+      213: 1316847904218340813
+    second: NES Zapper Projectile_hit_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -108,18 +159,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc9992b8efeab5c50800000000000000
-      internalID: 6655105282649725389
+      spriteID: 7bed0cf604a22df80800000000000000
+      internalID: -8083351924935434569
       vertices: []
       indices: 
       edges: []
@@ -129,18 +180,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aef3de07b84268350800000000000000
-      internalID: 6018538133340897258
+      spriteID: d297926f689ff4ec0800000000000000
+      internalID: -3580368820685407955
       vertices: []
       indices: 
       edges: []
@@ -150,18 +201,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60aa5af4a8a7bd1e0800000000000000
-      internalID: -2172007660815799802
+      spriteID: b5403378e90a2bd90800000000000000
+      internalID: -7083422661166824357
       vertices: []
       indices: 
       edges: []
@@ -171,18 +222,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fedbfb88f9cf733e0800000000000000
-      internalID: -2073911341256557073
+      spriteID: 1a0c5f888f24c2940800000000000000
+      internalID: 5272662898961137825
       vertices: []
       indices: 
       edges: []
@@ -192,18 +243,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2391e5cb0d47eb560800000000000000
-      internalID: 7331425683268049202
+      spriteID: 4864da3e6da540830800000000000000
+      internalID: 4036451045020092036
       vertices: []
       indices: 
       edges: []
@@ -213,18 +264,102 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83986bd0cdb4af710800000000000000
-      internalID: 1727776815544961336
+      spriteID: c24234e4039dd1190800000000000000
+      internalID: -7989991362390711252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES Zapper Projectile_hit_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 360c098c121775340800000000000000
+      internalID: 4852471513427787875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES Zapper Projectile_hit_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0766eb69262463880800000000000000
+      internalID: -8631638644605688208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES Zapper Projectile_hit_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df790a017a48a8a60800000000000000
+      internalID: 7677094367879796733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES Zapper Projectile_hit_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcdd6222132664210800000000000000
+      internalID: 1316847904218340813
       vertices: []
       indices: 
       edges: []
