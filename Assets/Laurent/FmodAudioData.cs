@@ -28,6 +28,10 @@ public class FmodAudioData : ScriptableObject
     public string playerRaygun = null;
     [FMODUnity.EventRef]
     public string playerRepair = null;
+    [FMODUnity.EventRef]
+    public string revive = null;
+
+
 
     [Header("Enemy")]
     [FMODUnity.EventRef]
