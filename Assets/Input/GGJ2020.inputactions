@@ -379,6 +379,28 @@
                 },
                 {
                     "name": "",
+                    "id": "555c0442-ee03-4ea2-a5d5-ef3abb5fc18c",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8be40b50-67a1-4a0e-b0db-70d978eecdb1",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "08c468e8-18e8-4683-b3be-e6de882e0a9d",
                     "path": "<XInputController>/buttonSouth",
                     "interactions": "",

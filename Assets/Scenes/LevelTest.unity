@@ -520,6 +520,7 @@ MonoBehaviour:
   potentialRooms:
   - {fileID: 8214302317336157625, guid: b5f99257e08bb144c82b98ce2a73c58a, type: 3}
   - {fileID: 8678412824283160666, guid: 6f156132b28601744a9c53ef8fda3a66, type: 3}
+  - {fileID: 5915408078763004582, guid: 8c6a927b0e375684e86d166d2d35a7eb, type: 3}
   endRoom: {fileID: 5888833901901657636, guid: 688b1eea1647ac34ea8e99233329509a, type: 3}
   bossRoom: {fileID: 0}
   numberOfRooms: 20
