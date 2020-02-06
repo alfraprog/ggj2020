@@ -33,11 +33,14 @@ public class RoomGenerator : MonoBehaviour
             CreateRoom(Instantiate(potentialRooms[randomPotentialRoom], new Vector3(offsetX, 0f, 0f), transform.rotation));
             offsetX += roomWidthInTiles;
         }
-
-        if (numberOfRooms == 0)
+        
+       if (bossRoom != null)
+       {
+            CreateRoom(Instantiate(bossRoom, new Vector3(offsetX, 0f, 0f), transform.rotation));
             offsetX += roomWidthInTiles;
+       }
 
-        CreateRoom(Instantiate(endRoom, new Vector3(offsetX, 0f, 0f), transform.rotation));
+       CreateRoom(Instantiate(endRoom, new Vector3(offsetX, 0f, 0f), transform.rotation));
     }
 
     void CreateRoom(GameObject room)

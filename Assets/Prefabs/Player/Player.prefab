@@ -743,7 +743,7 @@ MonoBehaviour:
   rb: {fileID: 1242653305840740679}
   uiController: {fileID: 1055909229}
   moveSpeed: 6
-  jumpForce: 2
+  jumpForce: 2.2
   offset: 0.5
   playerIndex: 0
   canMove: 1

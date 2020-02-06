@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
 
     private GameObject currentHealEffect;
 
+    public float disabledModifier = 2.0f;
+
     public void AddWeapon(Weapon weapon)
     {
         // destroy previous weapon
@@ -84,6 +86,9 @@ public class PlayerController : MonoBehaviour
 
             if (playerHealth < maxHealth / 2.0f)
             {
+                // set it to exactly half
+                playerHealth = maxHealth / 2.0f;
+
                 sfx.StartingToOverheat();
                 sfx.DisablePlayer();
                 currentState = PlayerState.Disabled;
@@ -223,6 +228,8 @@ public class PlayerController : MonoBehaviour
 
     void DoDisabledLogic()
     {
+        HandleMovement();
+
         playerHealth -= damageOverTime * Time.deltaTime;
         animator.SetFloat("health", playerHealth);
         uiController.UpdateHealth(playerHealth);
@@ -238,7 +245,13 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("y velocity "+rb.velocity.y);
         if (canMove)
         {
-            rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
+            
+            float localMoveSpeed = moveSpeed;
+
+            if (currentState == PlayerState.Disabled)
+                localMoveSpeed = moveSpeed / disabledModifier;
+
+            rb.velocity = new Vector2(moveDirection.x * localMoveSpeed, rb.velocity.y);
             animator.SetFloat("HorizonalSpeed", moveDirection.x);
         }
         else
@@ -252,7 +265,9 @@ public class PlayerController : MonoBehaviour
         if (firePressed > 0.0f)
         {
 
-            activeWeapon.Shoot(firePoint);
+            bool hasShot = activeWeapon.Shoot(firePoint);
+
+
             if (activeWeapon.ammo <= 0 && !activeWeapon.isInfinite)
             {
                 Debug.Log("Ran out of bullets");
@@ -319,17 +334,20 @@ public class PlayerController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (currentState == PlayerState.Disabled)
-        {
-            AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.repairMe);
-            return;
-        }
-
-
         // Make sure that we have a near 0 vertical velocity to avoid a bug when immediatly jumping when landing and borking the isGrounded
         if (waitTime <= 0f && isGrounded && Mathf.Abs(rb.velocity.y) < 0.01f)
-        { 
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        {
+            float localJumpforce = jumpForce;
+
+            if (currentState == PlayerState.Disabled)
+            {
+                localJumpforce = localJumpforce / disabledModifier;
+            }
+
+            if (currentState == PlayerState.Disabled)
+                AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.repairMe);
+
+            rb.AddForce(new Vector2(0, localJumpforce), ForceMode2D.Impulse);
             waitTime = timeBeforeNextJump;
             animator.SetTrigger("Jump");
         }

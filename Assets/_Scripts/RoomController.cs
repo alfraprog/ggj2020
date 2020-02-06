@@ -15,7 +15,7 @@ public class RoomController : MonoBehaviour
 
     public GameObject[] potentialEnemiesToSpawn;
     private float spawnCounter = 0f;
-    private float timeBetweenSpawns = 1.0f;
+    public float timeBetweenSpawns = 1.0f;
 
     public GameObject leftBlocker;
     public GameObject rightBlocker;

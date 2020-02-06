@@ -20,9 +20,9 @@ public class Weapon : MonoBehaviour
 
     }
 
-    public void Shoot(GameObject firePoint)
+    public bool Shoot(GameObject firePoint)
     {
-
+        bool hasShot = false;
         if (shootCountdown < 0 )
         {
             if (!isInfinite)
@@ -34,7 +34,10 @@ public class Weapon : MonoBehaviour
             Instantiate(playerBulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
             AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.shotgun);
             shootCountdown = timeBetweenShots;
+            hasShot = true;
         }
+
+        return hasShot;
     }
 
 

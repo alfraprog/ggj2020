@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 620781521}
   - component: {fileID: 620781520}
   m_Layer: 12
-  m_Name: Enemy
+  m_Name: EnemyAtari
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,10 +180,10 @@ MonoBehaviour:
       type: 3}
     moveSpeed: 0.1
     jumpForce: 2
-    decisionsPerSec: 1.2
+    decisionsPerSec: 0.66
     shotsPerFireDecision: 1
-    shootSkill: 1
-    agroness: 1
+    shootSkill: 0.673
+    agroness: 0.583
     home: {fileID: 0}
     spawnIsHome: 1
     respectHomeWhenAttackingPlayer: 1

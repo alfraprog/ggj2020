@@ -789,9 +789,10 @@ MonoBehaviour:
   - {fileID: 6695620970720479052}
   - {fileID: 6695620971627286801}
   roomActivation: {fileID: 5554768010155060426}
-  enemySpawnCount: 5
+  enemySpawnCount: 3
   potentialEnemiesToSpawn:
   - {fileID: 8688513587867277013, guid: a2178596cf2b8eb4aa9c95a4876e5f95, type: 3}
+  timeBetweenSpawns: 1
   leftBlocker: {fileID: 914697861871451330}
   rightBlocker: {fileID: 914697861734575381}
 --- !u!50 &5554768011233084654
