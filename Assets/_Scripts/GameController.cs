@@ -62,6 +62,16 @@ public class GameController : MonoBehaviour
             players.Add(player.GetComponent<PlayerController>());
             PositionPlayer(i);
         }
+
+        
+        if (selectPlayerCount == 1)
+        {
+            GameObject player = Instantiate(playerPrefab);
+            player.GetComponent<PlayerController>().isAI = true;
+            players.Add(player.GetComponent<PlayerController>());
+            PositionPlayer(1);
+        }
+        
        
     }
 

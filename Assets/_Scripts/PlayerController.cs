@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
     public float disabledModifier = 2.0f;
 
     private Vector2 hitPlayerOffset = new Vector2(0f, -1f);
+    public bool isAI;
+    private bool tryingToJump;
 
     public void AddWeapon(Weapon weapon)
     {
@@ -130,17 +132,7 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log("The repair value " + repairValue);
         repairValue = context.action.ReadValue<float>();
-        if (repairValue > 0 && oldRepairValue == 0)
-        {
-            startedRepairing = true;
-        }
-
-        if (repairValue == 0 && oldRepairValue > 0)
-        {
-            interruptRepairing = true;
-        }
-
-
+        
     }
 
     public void StopSounds()
@@ -168,11 +160,82 @@ public class PlayerController : MonoBehaviour
         GUILayout.EndArea();
     }
 
+    void DoAI()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject player in players)
+        {
+            if (player != gameObject)
+            {
+                moveDirection = (player.transform.position - transform.position);
+                moveDirection.Normalize();
+                HandleMoveInput();
+            }
+        }
+
+        repairValue = 1;
+        firePressed = 1;
+
+        if (UnityEngine.Random.Range(0, 100) > 98)
+        {
+            tryingToJump = true;
+        }
+
+
+    }
+
+    void HandleRepairInput()
+    {
+        if (repairValue > 0 && oldRepairValue == 0)
+        {
+            startedRepairing = true;
+        }
+
+        if (repairValue == 0 && oldRepairValue > 0)
+        {
+            interruptRepairing = true;
+        }
+    }
+
+
+    void HandleJumpInput()
+    {
+            if (tryingToJump == false)
+                return;
+
+        tryingToJump = false;
+
+        // Make sure that we have a near 0 vertical velocity to avoid a bug when immediatly jumping when landing and borking the isGrounded
+        if (waitTime <= 0f && isGrounded)
+        {
+            float localJumpforce = jumpForce;
+
+            if (currentState == PlayerState.Disabled)
+            {
+                localJumpforce = localJumpforce / disabledModifier;
+            }
+
+            if (currentState == PlayerState.Disabled)
+                AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.repairMe);
+
+            rb.AddForce(new Vector2(0, localJumpforce), ForceMode2D.Impulse);
+            waitTime = timeBeforeNextJump;
+            animator.SetTrigger("Jump");
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
 
-      
+        HandleRepairInput();
+        HandleJumpInput();
+
+        if (isAI)
+        {
+            DoAI();
+        }
+
         if (startedRepairing )
         {
             sfx.StartRepairing();
@@ -359,29 +422,11 @@ public class PlayerController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        // Make sure that we have a near 0 vertical velocity to avoid a bug when immediatly jumping when landing and borking the isGrounded
-        if (waitTime <= 0f && isGrounded )
-        {
-            float localJumpforce = jumpForce;
-
-            if (currentState == PlayerState.Disabled)
-            {
-                localJumpforce = localJumpforce / disabledModifier;
-            }
-
-            if (currentState == PlayerState.Disabled)
-                AudioPlayer.PlaySFX(AudioPlayer.instance.fmodAudio.repairMe);
-
-            rb.AddForce(new Vector2(0, localJumpforce), ForceMode2D.Impulse);
-            waitTime = timeBeforeNextJump;
-            animator.SetTrigger("Jump");
-        }
+        tryingToJump = true;
     }
 
-    public void Move(InputAction.CallbackContext context)
+    void HandleMoveInput()
     {
-        moveDirection = context.action.ReadValue<Vector2>();
-
         if (moveDirection.x < 0.0f)
         {
             firePoint.transform.localPosition = new Vector2(-weaponOffset, 0);
@@ -394,6 +439,13 @@ public class PlayerController : MonoBehaviour
             firePoint.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
             activeWeapon.transform.localScale = new Vector2(1, 1);
         }
+    }
+
+    public void Move(InputAction.CallbackContext context)
+    {
+        moveDirection = context.action.ReadValue<Vector2>();
+
+        HandleMoveInput();
     }
 
 
