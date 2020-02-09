@@ -25,6 +25,7 @@ public class RoomController : MonoBehaviour
     private bool roomActive = false;
 
     private List<GameObject> enemies = new List<GameObject>();
+    private int roomDifficulty;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,11 @@ public class RoomController : MonoBehaviour
             //"Hide placement graphic
             spawnPosition.SetActive(false);
         }
+    }
+
+    public void SetRoomDifficulty(int theRoomDifficulty)
+    {
+        roomDifficulty = theRoomDifficulty;
     }
 
     public void TriggerOverheadSound()
@@ -74,11 +80,9 @@ public class RoomController : MonoBehaviour
             other.gameObject.GetComponent<PlayerController>().DisableMovement();
 
             playerExitCount++;
-            Debug.Log("Detected the player " + other.gameObject.GetComponent<PlayerController>().playerIndex);
-
+        
             if (playerExitCount >= GameController.instance.playerCount)
             {
-                Debug.Log("Leaving this town...");
                 //int difficultyFactor = Mathf.RoundToInt((GameController.instance.playerCount - 1) * difficultyModifer);
                 // Debug.Log("Difficulty factor "+difficultyFactor);
 
@@ -90,6 +94,9 @@ public class RoomController : MonoBehaviour
 
     private void DetermineSpawnValuesByPlayerCount()
     {
+        // Add more enemies based on the room we're in
+        enemySpawnCount += roomDifficulty;
+
         int playerCount = GameController.instance.playerCount;
         if (playerCount == 1)
             numberOfEnemiesToSpawn = enemySpawnCount;

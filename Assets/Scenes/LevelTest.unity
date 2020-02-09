@@ -348,6 +348,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Controllers
       objectReference: {fileID: 0}
+    - target: {fileID: 2995142335563900340, guid: b4a0fc3422900984cafef0fe3d7877dd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2995142335563900344, guid: b4a0fc3422900984cafef0fe3d7877dd,
         type: 3}
       propertyPath: m_Enabled
@@ -620,7 +625,7 @@ MonoBehaviour:
   endRoom: {fileID: 5888833901901657636, guid: 688b1eea1647ac34ea8e99233329509a, type: 3}
   bossRoom: {fileID: 5915408078763004582, guid: e4a64698d89efe64eb9d8a24d19f90f1,
     type: 3}
-  numberOfRooms: 5
+  numberOfRooms: 10
   roomWidthInTiles: 30
 --- !u!4 &1054848652
 Transform:

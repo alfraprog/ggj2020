@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask groundLayer;
     public LayerMask playerLayer;
+    public LayerMask enemyLayer;
     private float timeBeforeNextJump = 0.3f;
     private float waitTime = 0.0f;
     public GameObject firePoint;
@@ -61,6 +62,8 @@ public class PlayerController : MonoBehaviour
     private GameObject currentHealEffect;
 
     public float disabledModifier = 2.0f;
+
+    private Vector2 hitPlayerOffset = new Vector2(0f, -1f);
 
     public void AddWeapon(Weapon weapon)
     {
@@ -145,9 +148,31 @@ public class PlayerController : MonoBehaviour
         sfx.StoppingOverheat();
     }
 
+    void OnGUI()
+    {
+        Vector3 point = new Vector3();
+        Event currentEvent = Event.current;
+        Vector2 mousePos = new Vector2();
+
+        // Get the mouse position from Event.
+        // Note that the y position from Event is inverted.
+        mousePos.x = currentEvent.mousePosition.x;
+        mousePos.y = Camera.main.pixelHeight - currentEvent.mousePosition.y;
+
+        point = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.nearClipPlane));
+
+        GUILayout.BeginArea(new Rect(20, 20, 250, 120));
+        GUILayout.Label("Screen pixels: " + Camera.main.pixelWidth + ":" + Camera.main.pixelHeight);
+        GUILayout.Label("Mouse position: " + mousePos);
+        GUILayout.Label("World position: " + point.ToString("F3"));
+        GUILayout.EndArea();
+    }
+
     // Update is called once per frame
     void Update()
     {
+
+      
         if (startedRepairing )
         {
             sfx.StartRepairing();
@@ -190,7 +215,7 @@ public class PlayerController : MonoBehaviour
             DoDisabledLogic();
         }
 
-        debugText.text = "Is grounded " + isGrounded.ToString();
+        
 
         if (currentState == PlayerState.Normal)
         {
@@ -335,7 +360,7 @@ public class PlayerController : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         // Make sure that we have a near 0 vertical velocity to avoid a bug when immediatly jumping when landing and borking the isGrounded
-        if (waitTime <= 0f && isGrounded && Mathf.Abs(rb.velocity.y) < 0.01f)
+        if (waitTime <= 0f && isGrounded )
         {
             float localJumpforce = jumpForce;
 
@@ -390,43 +415,68 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Started falling");
         animator.SetTrigger("Fall");
     }
+    
 
-    void CheckIsGrounded()
+    void CheckStandingOnPlayer()
     {
-        Vector2 position = new Vector2(transform.position.x , transform.position.y);
+        // We need an offset for player on player check
+        Vector2 position = new Vector2(transform.position.x + hitPlayerOffset.x, transform.position.y + hitPlayerOffset.y);
         Vector2 direction = Vector2.down;
-        float distance = 1.0f; 
-
-        Debug.DrawRay(position, direction, Color.green, 5000.0f);
-
-        RaycastHit2D hitGround = Physics2D.Raycast(position, direction, distance, groundLayer);
-
-        bool checkGround = false;
-        bool checkPlayer = false;
-
-        if (hitGround.collider != null )
-        {
-            checkGround = true;
-        }
+        float distance = 1.0f;
 
         RaycastHit2D hitPlayer = Physics2D.Raycast(position, direction, distance, playerLayer);
-        if (hitPlayer.collider != null && hitPlayer.collider.gameObject != gameObject)
-        {
-            checkPlayer = true;
-        }
 
-        //RaycastHit2D hit = Physics2D.Raycast(position, direction, distance);
-        if (checkPlayer || checkGround)
+        if (hitPlayer.collider != null)
         {
             isGrounded = true;
+            debugText.text = "Standing on player";
         }else
-        { 
-            isGrounded = false;
+        {
+            debugText.text = "";
         }
     }
 
+    void CheckStandingOnGround()
+    {
 
+        // No offset for ground check
+        Vector2 position = new Vector2(transform.position.x, transform.position.y);
+        Vector2 direction = Vector2.down;
+        float distance = 1.0f;
 
+        RaycastHit2D hitGround = Physics2D.Raycast(position, direction, distance, groundLayer);
 
+        if (hitGround.collider != null)
+        {
+            isGrounded = true;
+           // debugText.text = "Standing on ground";
+        }
+    }
 
+    void CheckStandingOnEnemy()
+    {
+        // We need an offset for player on enemy check
+        Vector2 position = new Vector2(transform.position.x + hitPlayerOffset.x, transform.position.y + hitPlayerOffset.y);
+        Vector2 direction = Vector2.down;
+        float distance = 1.0f;
+
+        RaycastHit2D hitEnemy = Physics2D.Raycast(position, direction, distance, enemyLayer);
+
+        if (hitEnemy.collider != null)
+        {
+            isGrounded = true;
+            //debugText.text = "Standing on enemy";
+        }
+    }
+
+    void CheckIsGrounded()
+    {
+        // sets the isGrounded boolean
+        // The problem with the logic is that for some cases we need an offset and for others we don't. The origin of the ray has to be within the player for ground check and outside the player for player and enemy checks.
+        // This is a bit perculiar. Now if we chose RayCastAll, the checks are also not being triggered the way I expect it. This is the only managable solution for now.
+        isGrounded = false;
+        CheckStandingOnPlayer();
+        CheckStandingOnEnemy();
+        CheckStandingOnGround();
+    }
 }

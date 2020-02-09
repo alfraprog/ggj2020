@@ -30,7 +30,9 @@ public class RoomGenerator : MonoBehaviour
         for (int i = 0; i < numberOfRooms; i++)
         {
             int randomPotentialRoom = Random.Range(0, potentialRooms.Length);
-            CreateRoom(Instantiate(potentialRooms[randomPotentialRoom], new Vector3(offsetX, 0f, 0f), transform.rotation));
+            GameObject room = Instantiate(potentialRooms[randomPotentialRoom], new Vector3(offsetX, 0f, 0f), transform.rotation);
+            room.GetComponent<RoomController>().SetRoomDifficulty(i);
+            CreateRoom(room);
             offsetX += roomWidthInTiles;
         }
         

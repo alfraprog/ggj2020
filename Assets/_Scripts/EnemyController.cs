@@ -24,7 +24,6 @@ public class EnemyController : MonoBehaviour
 
     public void DamageEnemy(float damageValue)
     {
-        Debug.Log("Damaging enemy");
         currentHealth -= damageValue;
 
         if (currentHealth <= 0f)

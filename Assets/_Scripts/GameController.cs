@@ -31,11 +31,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (rooms.Count < 1)
-        {
-            Debug.LogError("No rooms in game controller");
-            
-        }
+
        // if (musicActive)
        //     AudioPlayer.PlayMusic(AudioPlayer.instance.fmodAudio.musicTune01);
     }
@@ -56,7 +52,6 @@ public class GameController : MonoBehaviour
 
     public void CreatePlayers(int selectPlayerCount)
     {
-        Debug.Log("Creating " + selectPlayerCount + "players");
         UIManager.instance.HidePlayerSelection();
         playerCount = selectPlayerCount;
 
